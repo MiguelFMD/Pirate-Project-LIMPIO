@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6B5C692D-E040-D605-D787-2901C7B9DE2E}</ProjectGuid>
+    <ProjectGuid>{3DE5ADDD-A917-77BF-2856-1DB2C7DE2661}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -122,8 +122,6 @@
      <Compile Include="Assets\Scripts\BoatPhysics\WavesAndSea\EndlessWaterSquare.cs" />
      <Compile Include="Assets\Scripts\BoatPhysics\WavesAndSea\WaterSquare.cs" />
      <Compile Include="Assets\Scripts\BoatPhysics\WavesAndSea\WaveTypes.cs" />
-     <Compile Include="Assets\Scripts\CameraDepthTextureMode.cs" />
-     <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterBehaviour.cs" />
      <Compile Include="Assets\Scripts\Characters\CharacterSoundController.cs" />
      <Compile Include="Assets\Scripts\Characters\Enemies\Controllers\EnemyGunController.cs" />
@@ -162,24 +160,29 @@
      <Compile Include="Assets\Scripts\Characters\MainCharacter\StateMachineBehaviour\PlayerUnlockedTargetMovementBehaviour.cs" />
      <Compile Include="Assets\Scripts\Characters\MainCharacter\SwordCollisionDetector.cs" />
      <Compile Include="Assets\Scripts\Characters\SableController.cs" />
-     <Compile Include="Assets\Scripts\DisplayIcon.cs" />
-     <Compile Include="Assets\Scripts\DisplayXIcon.cs" />
-     <Compile Include="Assets\Scripts\EnemyLock.cs" />
-     <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
-     <Compile Include="Assets\Scripts\MapController.cs" />
-     <Compile Include="Assets\Scripts\MathUtils.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\LoadSceneOnClick.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\Map\DisplayIcon.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\Map\DisplayXIcon.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\Map\MapController.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\QuitOnClick.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\SelectOnInput.cs" />
+     <Compile Include="Assets\Scripts\Items\HealthPackageBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Items\KeyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Items\MoneySackBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Items\OpenChest.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\AIEnemyController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\AssetBundles\BundleController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\AssetBundles\SoundData.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\CameraRotator.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\CursorController.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\ExtendedFlycam.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\Camera\CameraRotator.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\Camera\CursorController.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\Camera\ExtendedFlycam.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\Camera\MathUtils.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\Camera\SplineController.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\Camera\SplineInterpolator.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\HealthPackageBehaviour.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\InputController.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\KeyBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\MoneySackBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\OpenChest.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\PointToBoatstation.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SceneController &amp; Transitions\CavernEntry.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SceneController &amp; Transitions\DockController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SceneController &amp; Transitions\SceneController.cs" />
@@ -188,12 +191,6 @@
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\GeneralSoundController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\IslandSceneSoundController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\MainMenuSoundController.cs" />
-     <Compile Include="Assets\Scripts\NormalsReplacementShader.cs" />
-     <Compile Include="Assets\Scripts\NoUsados\Probaturas.cs" />
-     <Compile Include="Assets\Scripts\NoUsados\ThirdPersonCamera.cs" />
-     <Compile Include="Assets\Scripts\PauseMenu.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\PointToBoatstation.cs" />
      <Compile Include="Assets\Scripts\Puzzles\ArrowButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\Puzzles\AudioController.cs" />
      <Compile Include="Assets\Scripts\Puzzles\ExtDebug.cs" />
@@ -204,14 +201,6 @@
      <Compile Include="Assets\Scripts\Puzzles\PuzleTrigger.cs" />
      <Compile Include="Assets\Scripts\Puzzles\SimonSays.cs" />
      <Compile Include="Assets\Scripts\Puzzles\VisualPuzle.cs" />
-     <Compile Include="Assets\Scripts\QuitOnClick.cs" />
-     <Compile Include="Assets\Scripts\RayCastCamera.cs" />
-     <Compile Include="Assets\Scripts\SelectOnInput.cs" />
-     <Compile Include="Assets\Scripts\SplineController.cs" />
-     <Compile Include="Assets\Scripts\SplineInterpolator.cs" />
-     <Compile Include="Assets\Scripts\TransitionDepur.cs" />
-     <Compile Include="Assets\Scripts\Transitions.cs" />
-     <Compile Include="Assets\Scripts\WaterBob.cs" />
      <None Include="Assets\AssetPacks\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Scripts\Shaders\ToonBasic.shader" />
      <None Include="Assets\Scripts\BoatPhysics\WaterSurfaceShader.shader" />
@@ -290,25 +279,25 @@
      <None Include="Assets\AssetPacks\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
      <None Include="Assets\AssetPacks\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Cinemachine">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.cinemachine.editor">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -512,13 +501,13 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.13f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>C:/Users/halva/Desktop/Pirates Project/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.13f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
