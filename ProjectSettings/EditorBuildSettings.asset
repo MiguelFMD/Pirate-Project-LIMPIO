@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Alvaro/Scenes/MainMenu.unity
-    guid: 0f1d071a382bd9f419ed225b558dc9f9
+    path: Assets/Scenes/MainMenu.unity
+    guid: 93e160b576fd718448f347868dafea35
   - enabled: 1
-    path: Assets/Alvaro/Scenes/BoatPhysics.unity
-    guid: 43635f9c03c5e79428c8d301b59c9fcc
+    path: Assets/Scenes/BoatPhysics.unity
+    guid: 2011ef5aa24e84742b443ee65ee8e75d
   - enabled: 1
-    path: Assets/Alvaro/Scenes/Island1.unity
-    guid: 29e12e1a823770a42b9a4aff71880843
+    path: Assets/Scenes/Island1.unity
+    guid: af7e8d2c28f8cee4ba9a4db61c1e0756
   - enabled: 1
-    path: Assets/Alvaro/Scenes/caverna.unity
-    guid: fb4024df158a5a242aedb870aaeaeaf1
+    path: Assets/Scenes/caverna.unity
+    guid: 80c663fd1a541d84c9bef02199e7544b
   m_configObjects: {}
