@@ -234,6 +234,7 @@
      <None Include="Assets\AssetPacks\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
      <None Include="Assets\AssetPacks\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
      <None Include="Assets\AssetPacks\Standard Assets\Environment\Water\DO_NOT_WORK_IN_VR.txt" />
+     <None Include="Assets\Scripts\Shaders\LookingThroughWater.cginc" />
      <None Include="Assets\Scripts\Shaders\Outline.shader" />
      <None Include="Assets\AssetPacks\PostProcessing\Resources\Shaders\Common.cginc" />
      <None Include="Assets\Scripts\Shaders\Roystan-UnlitShadowCaster.shader" />

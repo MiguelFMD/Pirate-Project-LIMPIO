@@ -60,6 +60,7 @@ MonoBehaviour:
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
+  m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0.5
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
@@ -70,6 +71,7 @@ MonoBehaviour:
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
+  m_CenterOnActivate: 1
 --- !u!114 &8263996478792907957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,9 +89,11 @@ MonoBehaviour:
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
+  m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
   m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &2734776668445714367
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +812,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 0
+  m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -816,6 +821,16 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2388289698388654754}
 --- !u!1 &7948693398939550156
 GameObject:
@@ -2271,13 +2286,6 @@ MonoBehaviour:
     m_Bits: 2048
   baseObj: {fileID: 8663066872911469684}
   nextPuzle: {fileID: 8663066873128323037}
-  arrowAnimators:
-  - {fileID: 4517435687590655315}
-  - {fileID: 8663066873023598001}
-  - {fileID: 8663066874222782862}
-  - {fileID: 8663066874678688298}
-  - {fileID: 8663066874328675199}
-  - {fileID: 8663066872994336771}
 --- !u!1 &8663066872918211270
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,7 +5333,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e2ede44a4255e444f995c1667c287a10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1fbacf1010e559c4a8ab472e4af1bb21, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7281,7 +7289,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f015335efeca3c4d8fd93cfffe25c24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2c612f1dd64cf5429ed359d33b5d3ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9754,7 +9762,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a3a4285fd2d2c684988b415acaddd802, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39509b9ccf161ca4595e2f7d51ab5ae9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -2714,7 +2714,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1227852810, guid: 980ceb3cbfc771b4d9f0df023247f064, type: 3}
       propertyPath: m_Name
-      value: Isla Grande 1
+      value: MonkeyIsland
       objectReference: {fileID: 0}
     - target: {fileID: 1227852811, guid: 980ceb3cbfc771b4d9f0df023247f064, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2722,7 +2722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227852811, guid: 980ceb3cbfc771b4d9f0df023247f064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.5
+      value: -128
       objectReference: {fileID: 0}
     - target: {fileID: 1227852811, guid: 980ceb3cbfc771b4d9f0df023247f064, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2760,14 +2760,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5677665176011583868, guid: 980ceb3cbfc771b4d9f0df023247f064,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870436057900028311, guid: 980ceb3cbfc771b4d9f0df023247f064,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 980ceb3cbfc771b4d9f0df023247f064, type: 3}
---- !u!1 &1247563916 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1227852810, guid: 980ceb3cbfc771b4d9f0df023247f064,
-    type: 3}
-  m_PrefabInstance: {fileID: 1247563915}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1286035189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4558,7 +4562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab5a6338d7f8364288c3995774e3771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boatObj: {fileID: 1247563916}
+  boatObj: {fileID: 980060547}
   waterSqrObj: {fileID: 6904860709501107136, guid: c6915e57f03789440b1c399781ab5291,
     type: 3}
   bottomSqrObj: {fileID: 6243307347798396739, guid: 61b58a3f96c1e6042906531191362724,

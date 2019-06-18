@@ -326,6 +326,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 0
+  m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -334,6 +335,16 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1063193143822410214}
 --- !u!1 &762217356957621271
 GameObject:
@@ -395,6 +406,7 @@ MonoBehaviour:
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
+  m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0.5
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
@@ -405,6 +417,7 @@ MonoBehaviour:
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
+  m_CenterOnActivate: 1
 --- !u!114 &1134477850955482966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,9 +435,11 @@ MonoBehaviour:
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
+  m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
   m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &823287116055991314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,7 +1090,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f015335efeca3c4d8fd93cfffe25c24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e42a1ed33c3b6345ae1bee94afc06e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1227,7 +1242,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e2ede44a4255e444f995c1667c287a10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db791bad16e0e12428cb654ae122010a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1992,13 +2007,6 @@ MonoBehaviour:
     m_Bits: 2048
   baseObj: {fileID: 2531432140511657492}
   nextPuzle: {fileID: 3179587040293435192}
-  arrowAnimators:
-  - {fileID: 7325446331393169203}
-  - {fileID: 2531432140934295505}
-  - {fileID: 2531432141965954030}
-  - {fileID: 2531432141511628874}
-  - {fileID: 2531432141795086623}
-  - {fileID: 2531432140494320227}
 --- !u!1 &2531432140522772646
 GameObject:
   m_ObjectHideFlags: 0
@@ -4342,7 +4350,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a3a4285fd2d2c684988b415acaddd802, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 937f4a5c52070a145b686461d912522e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

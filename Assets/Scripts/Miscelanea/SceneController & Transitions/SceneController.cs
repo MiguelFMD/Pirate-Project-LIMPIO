@@ -104,37 +104,11 @@ namespace DefinitiveScript
         private void FindBoatDocks()
         {
             BoatDocks = FindObjectsOfType<DockController>();
-
-            /*print(aux.Length);
-            
-            BoatDocks = new DockController[aux.Length/2];
-
-            int j = 0;
-            for(int i = 0; i < aux.Length; i++)
-            {
-                if(aux[i].enteringIsland) 
-                {
-                    BoatDocks[j] = aux[i];
-                    j++;
-                }
-            }*/
         }
 
         private void FindIslandDocks()
         {
             IslandDocks = FindObjectsOfType<DockController>();
-            
-            /*IslandDocks = new DockController[aux.Length/2];
-
-            int j = 0;
-            for(int i = 0; i < aux.Length; i++)
-            {
-                if(!aux[i].enteringIsland) 
-                {
-                    IslandDocks[j] = aux[i];
-                    j++;
-                }
-            }*/
         }
 
         private void FindExitCavernSpawnPoint()
