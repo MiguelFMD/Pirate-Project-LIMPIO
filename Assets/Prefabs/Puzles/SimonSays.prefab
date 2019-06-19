@@ -1204,6 +1204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137038251826125364}
   - component: {fileID: 2137038251826125365}
+  - component: {fileID: 5565105620729577231}
   m_Layer: 0
   m_Name: VisualPuzle
   m_TagString: Untagged
@@ -1251,6 +1252,23 @@ MonoBehaviour:
     m_Bits: 2048
   baseObj: {fileID: 2137038251826125367}
   nextPuzle: {fileID: 1429241834708784189}
+  arrowAnimators: []
+--- !u!114 &5565105620729577231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137038251826125367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cba0a1cd001bd438fa08da8c6a6d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectSource: {fileID: 7611644809287574928}
+  successSound: {fileID: 8300000, guid: f3e1425dbb273114ab9b0d4fcedfbec3, type: 3}
+  wrongSound: {fileID: 8300000, guid: 43769f3eab3bc0249bed94adda78d40f, type: 3}
+  selectSound: {fileID: 8300000, guid: 8b3a50e737d0a124eaa1780aefd1537d, type: 3}
 --- !u!1 &2137038251891971077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,10 +2741,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2137038253006288033}
-  - component: {fileID: 2137038253006288046}
   - component: {fileID: 7318681016610440567}
   - component: {fileID: 7318681016610440566}
   - component: {fileID: 7318681016610440565}
+  - component: {fileID: 7611644809287574928}
   m_Layer: 0
   m_Name: SimonSays
   m_TagString: Untagged
@@ -2755,18 +2773,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &2137038253006288046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137038253006288032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 268513927d707a5479b4da2df1c531e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &7318681016610440567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2807,6 +2813,103 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 30, z: 5}
   m_Center: {x: 0, y: -5, z: 0}
+--- !u!82 &7611644809287574928
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137038253006288032}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243660225638293124, guid: 8d720b75263d0a24fa358016360f134b,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2137038253023735310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4689,6 +4792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5850152412448251314}
   - component: {fileID: 1429241834708784189}
+  - component: {fileID: 7014260063808687671}
   m_Layer: 0
   m_Name: SimonSays
   m_TagString: Untagged
@@ -4736,14 +4840,26 @@ MonoBehaviour:
   portionMask:
     serializedVersion: 2
     m_Bits: 2048
-  colorSoundNames:
-  - RedSound
-  - BlueSound
-  - GreenSound
-  - YellowSound
-  errorSoundName: ErrorSound
-  simonSoundsBundleName: simonsounds
-  successSoundsBundleName: successsounds
+--- !u!114 &7014260063808687671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613599651179082150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560be75e422523a44bfb21221a128b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectSource: {fileID: 7611644809287574928}
+  successSound: {fileID: 8300000, guid: b34d4598a5ddef44f9c8536e68e5e9be, type: 3}
+  simonClips:
+  - {fileID: 8300000, guid: b8a8f8734cbf0a54f8fd6a1c0160daa1, type: 3}
+  - {fileID: 8300000, guid: d5237faff2ab4db4c97f74bb216b3cd8, type: 3}
+  - {fileID: 8300000, guid: a8c2f95353e13a94bbbde943bb5e15c9, type: 3}
+  - {fileID: 8300000, guid: 4bc662b0c47361644a7f225c6f2a5cf5, type: 3}
+  wrongSound: {fileID: 8300000, guid: 43769f3eab3bc0249bed94adda78d40f, type: 3}
 --- !u!1 &8779129185402532436
 GameObject:
   m_ObjectHideFlags: 0

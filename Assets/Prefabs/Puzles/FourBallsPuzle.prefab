@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1960,6 +1960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2531432140511657495}
   - component: {fileID: 2531432140511657494}
+  - component: {fileID: 451932347925572152}
   m_Layer: 0
   m_Name: VisualPuzle
   m_TagString: Untagged
@@ -2007,6 +2008,23 @@ MonoBehaviour:
     m_Bits: 2048
   baseObj: {fileID: 2531432140511657492}
   nextPuzle: {fileID: 3179587040293435192}
+  arrowAnimators: []
+--- !u!114 &451932347925572152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531432140511657492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cba0a1cd001bd438fa08da8c6a6d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectSource: {fileID: 5332891315806470956}
+  successSound: {fileID: 8300000, guid: f3e1425dbb273114ab9b0d4fcedfbec3, type: 3}
+  wrongSound: {fileID: 8300000, guid: 43769f3eab3bc0249bed94adda78d40f, type: 3}
+  selectSound: {fileID: 8300000, guid: 8b3a50e737d0a124eaa1780aefd1537d, type: 3}
 --- !u!1 &2531432140522772646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,7 +2280,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2774,7 +2792,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4201,10 +4219,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2531432142025314434}
-  - component: {fileID: 2531432142025314445}
   - component: {fileID: 6564015641450602836}
   - component: {fileID: 6564015641450602837}
   - component: {fileID: 6564015641450602838}
+  - component: {fileID: 5332891315806470956}
   m_Layer: 0
   m_Name: FourBallsPuzle
   m_TagString: Untagged
@@ -4233,18 +4251,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2531432142025314445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2531432142025314435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 268513927d707a5479b4da2df1c531e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &6564015641450602836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4285,6 +4291,103 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 30, z: 5}
   m_Center: {x: 0, y: -5, z: 0}
+--- !u!82 &5332891315806470956
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531432142025314435}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243660225638293124, guid: 8d720b75263d0a24fa358016360f134b,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2531432142040539456
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,6 +5027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263786411777051002}
   - component: {fileID: 3179587040293435192}
+  - component: {fileID: 4073360677097687551}
   m_Layer: 0
   m_Name: 4_Balls
   m_TagString: Untagged
@@ -4983,6 +5087,20 @@ MonoBehaviour:
   - {fileID: 8905820427093559418}
   - {fileID: 3509189917440837856}
   scaleFactor: 0.1256968
+--- !u!114 &4073360677097687551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491896039422360239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ddafabac766d742a07cf599699709a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectSource: {fileID: 5332891315806470956}
+  successSound: {fileID: 8300000, guid: b34d4598a5ddef44f9c8536e68e5e9be, type: 3}
 --- !u!1 &3509189917440837856
 GameObject:
   m_ObjectHideFlags: 0

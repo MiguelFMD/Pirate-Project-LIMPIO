@@ -50,6 +50,7 @@ namespace DefinitiveScript
         private bool turningRight;
         private bool sableMode;
         private bool lockedTarget;
+        private bool playerOff;
 
         void Update()
         {
@@ -65,6 +66,7 @@ namespace DefinitiveScript
             Animator.SetBool("TurnLeft", turningLeft);
             Animator.SetBool("TurnRight", turningRight);
             Animator.SetBool("LockedTarget", lockedTarget);
+            Animator.SetBool("PlayerOff", playerOff);
 
             HealthController.SetUsingStamina((movement && running) || ((verticalMovement != 0f || horizontalMovement != 0f) && running) || blocking);
         }
@@ -259,12 +261,23 @@ namespace DefinitiveScript
             lockedTarget = value;
         }
 
+        public void SetPlayerOff(bool value)
+        {
+            if(!playerOff && value) StopPlayer();
+            playerOff = value;
+        }
+
         public void ResetMovement()
         {
             verticalMovement = 0.0f;
             horizontalMovement = 0.0f;
             movement = false;
             running = false;
+        }
+
+        private void StopPlayer()
+        {
+            Animator.SetTrigger("STOP");
         }
     }
 }

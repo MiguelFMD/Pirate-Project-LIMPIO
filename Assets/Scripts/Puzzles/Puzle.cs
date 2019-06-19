@@ -18,6 +18,8 @@ namespace DefinitiveScript
 
         public PuzleController PuzleController;
 
+        public int puzleID;
+
         public virtual void StartPuzle()
         {
 
@@ -43,7 +45,7 @@ namespace DefinitiveScript
         public void IntroducePuzle(PlayerBehaviour player)
         {
             this.player = player;
-            this.player.stopInput = true;
+            this.player.playerOff = true;
             this.player.MakeVisible(false);
 
             GameManager.Instance.CursorController.UnlockCursor();            
@@ -51,18 +53,7 @@ namespace DefinitiveScript
             puzleCamera.m_Priority = 12;
 
             StartPuzle();
-
-            /* originalCameraLocalPosition = Camera.main.transform.localPosition;
-            originalCameraLocalRotation = Camera.main.transform.localRotation;
-            StartCoroutine(MoveCameraIntoPuzle(0.5f));*/
         }
-
-        /* protected IEnumerator MoveCameraIntoPuzle(float time)
-        {
-            yield return StartCoroutine(Camera.main.GetComponent<ThirdPersonCamera>().MoveCameraTo(time, puzleCameraTrans.position, puzleCameraTrans.rotation));
-
-            
-        }*/
 
         protected void ExitFromPuzle()
         {
@@ -72,21 +63,19 @@ namespace DefinitiveScript
 
             GameManager.Instance.CursorController.LockCursor();  
 
-            player.stopInput = false;
+            player.playerOff = false;
             player.MakeVisible(true);
             player = null;
         }
 
-        /* protected IEnumerator MoveCameraOutOfPuzle(float time)
-        {
-            yield return StartCoroutine(Camera.main.GetComponent<ThirdPersonCamera>().ReturnCameraToLastPosition(time, originalCameraLocalPosition, originalCameraLocalRotation, false));
-
-            
-        }*/
-
         public bool GetEndedPuzle()
         {
             return endedPuzle;
+        }
+
+        public void SetEndedPuzle(bool value)
+        {
+            endedPuzle = value;
         }
     }
 }

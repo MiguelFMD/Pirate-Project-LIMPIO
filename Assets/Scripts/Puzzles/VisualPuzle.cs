@@ -24,13 +24,26 @@ namespace DefinitiveScript
             }
         }
 
+        private VisualPuzleSoundController m_VisualPuzleSoundController;
+        public VisualPuzleSoundController VisualPuzleSoundController
+        {
+            get {
+                if(m_VisualPuzleSoundController == null) m_VisualPuzleSoundController = GetComponent<VisualPuzleSoundController>();
+                return m_VisualPuzleSoundController;
+            }
+        }
+
         public GameObject baseObj;
         private Transform baseTrans;
 
         public Puzle nextPuzle;
 
+        public Animator[] arrowAnimators;
+
+        private int numSelected;
+
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             baseTrans = baseObj.transform;
             InitializePuzle();
@@ -47,7 +60,9 @@ namespace DefinitiveScript
             for(int i = 0; i < currentNumbers.Length; i++)
             {
                 numberTexts[i].text = currentNumbers[i].ToString();
+                numberTexts[i].color = Color.white;
             }
+            ChangeSelectedNumber(0, 0);
             
             buttonBeingPressed = false;
         }
@@ -57,46 +72,70 @@ namespace DefinitiveScript
         {
             if(onPuzle)
             {
-                if(!buttonBeingPressed && InputController.ShootingInput)
+                if(InputController.IncreaseNumber && !InputController.DecreaseNumber && !InputController.ChangeSelectedNumberRight && !InputController.ChangeSelectedNumberLeft)
                 {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    arrowAnimators[numSelected * 2].SetTrigger("PressedButton");
+                    ChangeNumber(numSelected, 1);
+                    VisualPuzleSoundController.PlaySelectSound();
+                }
+                else if(InputController.DecreaseNumber && !InputController.ChangeSelectedNumberRight && !InputController.ChangeSelectedNumberLeft)
+                {
+                    arrowAnimators[numSelected * 2 + 1].SetTrigger("PressedButton");
+                    ChangeNumber(numSelected, -1);
+                    VisualPuzleSoundController.PlaySelectSound();
+                }
+                else if(InputController.ChangeSelectedNumberRight && !InputController.ChangeSelectedNumberLeft)
+                {
+                    ChangeSelectedNumber(numSelected, numSelected + 1);
+                    VisualPuzleSoundController.PlaySelectSound();
+                }
+                else if(InputController.ChangeSelectedNumberLeft)
+                {
+                    ChangeSelectedNumber(numSelected, numSelected - 1);
+                    VisualPuzleSoundController.PlaySelectSound();
+                }
 
-                    RaycastHit hit;
-                    if(Physics.Raycast(ray, out hit, Mathf.Infinity, arrowLayer))
+                if(InputController.CheckNumbers)
+                {
+                    if(CheckNumbers()) 
                     {
-                        if(hit.collider.gameObject.tag == "Arrow")
-                        {
-                            GameObject arrow = hit.collider.gameObject;
-                            ArrowButtonBehaviour realArrow = arrow.GetComponentInParent<ArrowButtonBehaviour>();
-
-                            ChangeNumber(realArrow.number, realArrow.increase);
-
-                            realArrow.GetComponent<Animator>().SetTrigger("PressedButton");
-                            buttonBeingPressed = true;
-                        }
+                        PuzleController.VisualPuzleResolved(puzleID);
+                        StartCoroutine(OpenPuzle(1.0f));
+                        VisualPuzleSoundController.PlaySuccessSound();
+                    }
+                    else
+                    {
+                        VisualPuzleSoundController.PlayWrongSound();
                     }
                 }
                 
-                if(Input.GetKeyDown(KeyCode.Z))
+                if(InputController.ExitFromPuzle)
                 {
                     FinishPuzle();
                 }
+
+
             }
+        }
+
+        void ChangeSelectedNumber(int lastNumber, int newNumber)
+        {
+            if(newNumber > 2) newNumber = 0;
+            else if(newNumber < 0) newNumber = 2;
+
+            numberTexts[lastNumber].color = Color.white;
+            numberTexts[newNumber].color = Color.yellow;
+
+            numSelected = newNumber;
         }
 
         void ChangeNumber(int number, int increase)
         {
-            int i = number - 1;
-            currentNumbers[i] += increase;
-            if(currentNumbers[i] > 9) currentNumbers[i] = 0;
-            else if(currentNumbers[i] < 0) currentNumbers[i] = 9;
+            currentNumbers[number] += increase;
+            if(currentNumbers[number] > 9) currentNumbers[number] = 0;
+            else if(currentNumbers[number] < 0) currentNumbers[number] = 9;
 
-            numberTexts[i].text = currentNumbers[i].ToString();
-
-            if(CheckNumbers()) 
-            {
-                StartCoroutine(OpenPuzle(1.0f));
-            }
+            numberTexts[number].text = currentNumbers[number].ToString();
         }
 
         IEnumerator PressArrow(float time)
@@ -149,6 +188,11 @@ namespace DefinitiveScript
 
             nextPuzle.SendInfo(player, originalCameraLocalPosition, originalCameraLocalRotation);
             nextPuzle.StartPuzle();
+        }
+
+        public void InstantlyOpenPuzle()
+        {
+            baseTrans.localRotation = Quaternion.Euler(baseTrans.localRotation.eulerAngles.x, baseTrans.localRotation.eulerAngles.y + 90f, baseTrans.localRotation.eulerAngles.z);
         }
     }
 }

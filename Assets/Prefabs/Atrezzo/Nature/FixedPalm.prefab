@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3060878679621967689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8708254485398546077}
+  - component: {fileID: 124498218597614400}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8708254485398546077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060878679621967689}
+  m_LocalRotation: {x: 0.0678412, y: 0, z: 0, w: 0.99769616}
+  m_LocalPosition: {x: 0, y: 2.89, z: -0.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5841783130665065903}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 7.78, y: 0, z: 0}
+--- !u!136 &124498218597614400
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060878679621967689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.27
+  m_Height: 2.13
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3465865907364373847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4669928006782351520}
+  - component: {fileID: 6583534887592939960}
+  m_Layer: 0
+  m_Name: Collider (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4669928006782351520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465865907364373847}
+  m_LocalRotation: {x: 0.17699888, y: 0, z: 0, w: 0.9842111}
+  m_LocalPosition: {x: 0, y: 4.44, z: -0.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5841783130665065903}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 20.39, y: 0, z: 0}
+--- !u!136 &6583534887592939960
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465865907364373847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.27
+  m_Height: 2.13
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5841783130665414051
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +101,6 @@ GameObject:
   - component: {fileID: 5841783130665065903}
   - component: {fileID: 5841783130664220153}
   - component: {fileID: 5841783130663214327}
-  - component: {fileID: 5841783130667430723}
   - component: {fileID: 6286914861576380261}
   m_Layer: 0
   m_Name: Tree_09_summer_mat
@@ -30,7 +119,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8708254485398546077}
+  - {fileID: 4669928006782351520}
   m_Father: {fileID: 8110535595881491224}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -80,20 +171,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5841783130667430723
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5841783130665414051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 1b0a83107f38a4643a2c162dc0bb79e6, type: 3}
 --- !u!136 &6286914861576380261
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -104,10 +181,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.31570435
-  m_Height: 6.513998
+  m_Radius: 0.25
+  m_Height: 2.81
   m_Direction: 1
-  m_Center: {x: -0.04664612, y: 2.897667, z: -0.9508362}
+  m_Center: {x: -0, y: 1.14, z: -1.07}
 --- !u!1 &6436183421978513238
 GameObject:
   m_ObjectHideFlags: 0

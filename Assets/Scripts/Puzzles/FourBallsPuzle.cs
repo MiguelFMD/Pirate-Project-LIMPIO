@@ -19,6 +19,15 @@ namespace DefinitiveScript
             }
         }
 
+        private PuzleSoundController m_PuzleSoundController;
+        public PuzleSoundController PuzleSoundController
+        {
+            get {
+                if(m_PuzleSoundController == null) m_PuzleSoundController = GetComponent<PuzleSoundController>();
+                return m_PuzleSoundController;
+            }
+        }
+
         private GameObject selectedObject;
         private Vector2 mousePosition;
         
@@ -29,9 +38,6 @@ namespace DefinitiveScript
 
         //Heredado: protected bool onPuzle;
         //Heredado: protected bool endedPuzle;
-
-        //private Vector3 position;
-        //private Vector3 size;
 
         public float scaleFactor;
 
@@ -73,10 +79,8 @@ namespace DefinitiveScript
                         Bounds bounds = selectedObject.GetComponent<Renderer>().bounds;
                         float direction = Mathf.Sign(xDifference);
 
-                        //position = selectedObject.transform.position + direction * Vector3.right * (distanceToMove/2 + bounds.extents.x);
                         Vector3 size = new Vector3(distanceToMove/2, bounds.extents.y, distanceToMove/2) * 0.8f;
 
-                        //ExtDebug.DrawBoxCastBox(selectedObject.transform.position, size, Quaternion.identity, direction * Vector3.right, distanceToMove, Color.red, Color.blue, Color.green);
                         if(!Physics.BoxCast(selectedObject.transform.position, size, direction * Vector3.right, Quaternion.identity, distanceToMove, blockingLayerMask))
                         {
                             selectedObject.transform.position += Vector3.right * direction * distanceToMove;
@@ -90,10 +94,8 @@ namespace DefinitiveScript
                         Bounds bounds = selectedObject.GetComponent<Renderer>().bounds;
                         float direction = Mathf.Sign(yDifference);
 
-                        //position = selectedObject.transform.position + direction * Vector3.up * (distanceToMove/2 + bounds.extents.y);
                         Vector3 size = new Vector3(bounds.extents.x, distanceToMove/2, distanceToMove/2) * 0.8f;
 
-                        //ExtDebug.DrawBoxCastBox(selectedObject.transform.position, size, Quaternion.identity, direction * Vector3.up, distanceToMove, Color.red, Color.blue, Color.green);
                         if(!Physics.BoxCast(selectedObject.transform.position, size, direction * Vector3.up, Quaternion.identity, distanceToMove, blockingLayerMask))
                         {
                             selectedObject.transform.position += Vector3.up * direction * distanceToMove;
@@ -124,20 +126,12 @@ namespace DefinitiveScript
             
         }
 
-        /* void OnDrawGizmos()
-        {
-            //Gizmos.color = new Color(1, 0, 0, 1f);
-            //Gizmos.DrawCube(position, size * 2);
-        }*/
-
         void DetectWin(GameObject movedObject)
         {
             if(movedObject.tag == "Ball")
             {
                 for(int i = 0; i < balls.Length; i++)
                 {
-                    //Physics.BoxCast(selectedObject.transform.position, size, direction * Vector3.right, Quaternion.identity, distanceToMove, blockingLayerMask)
-
                     if(movedObject == balls[i]) 
                     {
                         Vector3 ballPosition = balls[i].transform.position;
@@ -146,7 +140,6 @@ namespace DefinitiveScript
                         if(Mathf.Abs(ballPosition.x - pointPosition.x) < 0.001f && Mathf.Abs(ballPosition.y - pointPosition.y) < 0.001f)
                         {
                             ballsInCorrectPlace[i] = true;
-                            print("Una menos");
                             bool win = true;
                             for(int k = 0; k < ballsInCorrectPlace.Length; k++)
                             {
@@ -155,14 +148,13 @@ namespace DefinitiveScript
 
                             if(win)
                             {
-                                PuzleController.PuzleResolved();
+                                PuzleController.PuzleResolved(puzleID);
+                                PuzleSoundController.PlaySuccessSound();
                                 endedPuzle = true;
                                 FinishPuzle();
                             }
                         }
                         else ballsInCorrectPlace[i] = false;
-
-                        print(ballsInCorrectPlace[0] + " " + ballsInCorrectPlace[1] + " " + ballsInCorrectPlace[2] + " " + ballsInCorrectPlace[3]);
                     }
                 }
             }
