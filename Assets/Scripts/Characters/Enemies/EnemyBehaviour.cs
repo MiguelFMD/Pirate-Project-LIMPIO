@@ -51,7 +51,7 @@ public class EnemyBehaviour : CharacterBehaviour
     private AIEnemyController m_AIEnemyController;
     public AIEnemyController AIEnemyController {
         get {
-            if(m_AIEnemyController == null) m_AIEnemyController = GameManager.Instance.AIEnemyController;
+            if(m_AIEnemyController == null) m_AIEnemyController = GameObject.FindWithTag("AIEnemyController").GetComponent<AIEnemyController>();
             return m_AIEnemyController;
         }
     }
@@ -177,29 +177,32 @@ public class EnemyBehaviour : CharacterBehaviour
 
     public void CharacterDetection(bool collidingSphere, bool collidingEnemy)
     {
-        bool result = false;
-        if(collidingSphere) //El personaje está dentro de la esfera de colisión
+        if(alive)
         {
-            Vector3 relativePositionToPlayer = playerTransform.position - transform.position; //Posición relativa del jugador con respecto al enemigo
-            Vector3 globalForwardFromEnemy = transform.TransformDirection(Vector3.forward); //Vector dirección del frente del enemigo
+            bool result = false;
+            if(collidingSphere) //El personaje está dentro de la esfera de colisión
+            {
+                Vector3 relativePositionToPlayer = playerTransform.position - transform.position; //Posición relativa del jugador con respecto al enemigo
+                Vector3 globalForwardFromEnemy = transform.TransformDirection(Vector3.forward); //Vector dirección del frente del enemigo
 
-            float angleBetweenVectors = Vector3.Angle(relativePositionToPlayer, globalForwardFromEnemy);
+                float angleBetweenVectors = Vector3.Angle(relativePositionToPlayer, globalForwardFromEnemy);
 
-            if(angleBetweenVectors < detectionAngle) //El personaje está dentro del campo de visión del enemigo
-            {                    
-                Transform playerCenter = playerTransform.GetComponent<PlayerBehaviour>().characterCenter;
-                Vector3 vectorBetweenCharacters = playerCenter.position - characterCenter.position;
-                if(!Physics.Raycast(characterCenter.position, vectorBetweenCharacters, vectorBetweenCharacters.magnitude, visionObstacles)) //No existen obstáculos para la visión del enemigo
-                {
-                    result = true;
+                if(angleBetweenVectors < detectionAngle) //El personaje está dentro del campo de visión del enemigo
+                {                    
+                    Transform playerCenter = playerTransform.GetComponent<PlayerBehaviour>().characterCenter;
+                    Vector3 vectorBetweenCharacters = playerCenter.position - characterCenter.position;
+                    if(!Physics.Raycast(characterCenter.position, vectorBetweenCharacters, vectorBetweenCharacters.magnitude, visionObstacles)) //No existen obstáculos para la visión del enemigo
+                    {
+                        result = true;
+                    }
                 }
             }
+
+            if(collidingEnemy) result = true;
+
+            if(IsFollowing() && !result) SetSearching();
+            if(!IsStaring() && !IsAttacking() && !IsBlocking() && result) SetFollowing();
         }
-
-        if(collidingEnemy) result = true;
-
-        if(IsFollowing() && !result) SetSearching();
-        if(!IsStaring() && !IsAttacking() && !IsBlocking() && result) SetFollowing();
     }
 
     public void Disarm()
@@ -248,6 +251,7 @@ public class EnemyBehaviour : CharacterBehaviour
 
     public void Disappear()
     {
+        AIEnemyController.SetPlayerDetected(enemyID, false);
         EnemyLootController.ReleaseLoot();
         StartCoroutine(FadeOut(1.0f));
     }

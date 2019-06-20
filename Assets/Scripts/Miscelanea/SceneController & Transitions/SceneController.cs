@@ -11,6 +11,7 @@ namespace DefinitiveScript
     {
         private bool created;
         private PlayerBehaviour PlayerBehaviour;
+        private PlayerHealthController PlayerHealthController;
         private Transform BoatTransform;
         private GameObject GM;
 
@@ -23,8 +24,6 @@ namespace DefinitiveScript
         private int dockID;
         
         private bool changedScene = false;
-
-        private bool resolvedPuzles = false;
 
         private DockController[] BoatDocks;
         private DockController[] IslandDocks;
@@ -40,6 +39,8 @@ namespace DefinitiveScript
 
         private GeneralSoundController soundController;
 
+        private GameData gameData;
+
         void Awake()
         {
             GameObject[] objs = GameObject.FindGameObjectsWithTag("SceneController");
@@ -48,21 +49,26 @@ namespace DefinitiveScript
             {
                 Destroy(this.gameObject);
             }
+            else
+            {   
+                //if(!created) lastScene = -1;
+                lastScene = SceneManager.GetActiveScene().buildIndex;
 
-            if(!created) lastScene = -1;
+                DontDestroyOnLoad(GameManager.Instance.GameObject);
+                DontDestroyOnLoad(this.gameObject);
 
-            DontDestroyOnLoad(GameManager.Instance.GameObject);
-            DontDestroyOnLoad(this.gameObject);
+                SceneManager.sceneLoaded += InitializeScene;
 
-            SceneManager.sceneLoaded += InitializeScene;
+                GameManager.Instance.SceneController = this;
 
-            created = true;
+                created = true;
+
+                gameData = new GameData();
+            }
         }
 
         void Start()
         {
-            GameManager.Instance.SceneController = this;
-
             if(SceneManager.GetActiveScene().buildIndex == mainMenuID) GameManager.Instance.CursorController.UnlockCursor();
             else GameManager.Instance.CursorController.LockCursor();
 
@@ -70,12 +76,9 @@ namespace DefinitiveScript
             InitializeScene(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         }
 
-        void Update() {
-            /*if(changedScene)
-            {
-                InitializeScene();
-                changedScene = false;
-            }*/
+        void Update() 
+        {
+
         }
 
         private void FindPlayer()
@@ -85,7 +88,8 @@ namespace DefinitiveScript
             {
                 PlayerBehaviour = aux.GetComponent<PlayerBehaviour>();
                 
-                PlayerBehaviour.enabled = true;
+                PlayerHealthController = PlayerBehaviour.GetComponent<PlayerHealthController>();
+                PlayerHealthController.LoadPlayerData();
             }
         }
 
@@ -233,6 +237,7 @@ namespace DefinitiveScript
 
         public void BackToMenu()
         {
+            ResetGameData();
             StartCoroutine(ChangeToScene(mainMenuID));
         }
 
@@ -250,6 +255,7 @@ namespace DefinitiveScript
 
         public void ToSail(int dockID)
         {
+            PlayerHealthController.SavePlayerData();
             this.dockID = dockID;
 
             StartCoroutine(ChangeToScene(boatSceneID));
@@ -257,16 +263,19 @@ namespace DefinitiveScript
 
         public void EnterIntoTheCavern()
         {
+            PlayerHealthController.SavePlayerData();
             StartCoroutine(ChangeToScene(cavernSceneID));
         }
 
         public void ExitFromTheCavern()
         {
+            PlayerHealthController.SavePlayerData();
             StartCoroutine(ChangeToScene(islandSceneID));
         }
 
         public void ShowDeathText()
         {
+            ResetGameData();
             deathText.enabled = true;
             StartCoroutine(FadeInDeathText(1.5f));
         }
@@ -311,30 +320,6 @@ namespace DefinitiveScript
         {
             StartCoroutine(ChangeToScene(SceneManager.GetActiveScene().buildIndex));
         }
-
-        /*public void ChangeToScene(string name)
-        {
-            StartCoroutine(TransitionToScene(fadingTime, name));
-        }
-
-        public void ChangeToScene(int id)
-        {
-            StartCoroutine(TransitionToScene(fadingTime, id));
-        }
-
-        private IEnumerator TransitionToScene(float time, string name)
-        {
-            yield return StartCourutine(FadeOut(time));
-            SceneManager.LoadScene(name);
-            yield return StartCoroutine(FadeIn(time));
-        }
-
-        private IEnumerator TransitionToScene(float time, int id)
-        {
-            yield return StartCourutine(FadeOut(time));
-            SceneManager.LoadScene(id);
-            yield return StartCoroutine(FadeIn(time));
-        }*/
 
         private IEnumerator FadeOut(float time)
         {
@@ -381,14 +366,61 @@ namespace DefinitiveScript
             blackScreen.enabled = false;
         }
 
-        public bool GetResolvedPuzles()
+        public float LoadPlayerHealth()
         {
-            return resolvedPuzles;
+            return gameData.playerHealth;
+        }
+
+        public int LoadPlayerMoney()
+        {
+            return gameData.playerMoney;
+        }
+
+        public bool LoadPlayerHasKey()
+        {
+            return gameData.playerHasKey;
+        }
+
+        public void SavePlayerData(float health, int money, bool hasKey)
+        {
+            gameData.playerHealth = health;
+            gameData.playerMoney = money;
+            gameData.playerHasKey = hasKey;
+        }
+
+        public bool GetResolvedVisualPuzle(int i)
+        {
+            return gameData.resolvedVisualPuzles[i];
+        }
+
+        public void ResolvedVisualPuzle(int i)
+        {
+            gameData.resolvedVisualPuzles[i] = true;
+        }
+
+        public bool GetResolvedPuzle(int i)
+        {
+            return gameData.resolvedPuzles[i];
         }
         
-        public void SetResolvedPuzles(bool value)
+        public void ResolvedPuzle(int i)
         {
-            resolvedPuzles = value;
+            gameData.resolvedPuzles[i] = true;
+        }
+
+        public bool GetOpennedCavern()
+        {
+            return gameData.opennedCavern;
+        }
+
+        public void OpennedCavern()
+        {
+            gameData.opennedCavern = true;
+        }
+
+        public void ResetGameData()
+        {
+            gameData.Reset();
         }
     }
 }

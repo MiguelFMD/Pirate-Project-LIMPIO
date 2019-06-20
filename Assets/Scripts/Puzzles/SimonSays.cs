@@ -30,18 +30,14 @@ namespace DefinitiveScript
             }
         }
 
-        private AudioController m_AudioController;
-        public AudioController AudioController {
+        private SimonSaysSoundController m_SimonSaysSoundController;
+        public SimonSaysSoundController SimonSaysSoundController
+        {
             get {
-                if(m_AudioController == null) m_AudioController = GameManager.Instance.AudioController;
-                return m_AudioController;
+                if(m_SimonSaysSoundController == null) m_SimonSaysSoundController = GetComponent<SimonSaysSoundController>();
+                return m_SimonSaysSoundController; 
             }
         }
-
-        public string[] colorSoundNames;
-        public string errorSoundName;
-        public string simonSoundsBundleName;
-        public string successSoundsBundleName;
 
         //Heredado: protected bool onPuzle;
 
@@ -57,7 +53,6 @@ namespace DefinitiveScript
         // Start is called before the first frame update
         void Start()
         {
-            StartCoroutine(LoadAssets());
             InitializePuzle();
         }
 
@@ -68,14 +63,6 @@ namespace DefinitiveScript
             pointedPortion = null;
             currentSequence = 0;
             currentWaitingColor = 0;
-        }
-
-        IEnumerator LoadAssets()
-        {
-            AudioController.LoadAudioAssetBundle(simonSoundsBundleName);
-            AudioController.LoadAudioAssetBundle(successSoundsBundleName);
-
-            while(AudioController.GetOnRequest()) yield return null;
         }
 
         public override void StartPuzle()
@@ -150,7 +137,7 @@ namespace DefinitiveScript
 
                 Material portionMaterial = portionMaterials[j];
                 
-                AudioController.PlaySoundEffect(simonSoundsBundleName, colorSoundNames[j]);
+                SimonSaysSoundController.PlaySimonSound(j);
 
                 yield return StartCoroutine(BrightPortionForTime(portionMaterial, timeBetweenLights));
             }
@@ -177,8 +164,8 @@ namespace DefinitiveScript
 
             bool correct = int.Parse(colorSequences[currentSequence][currentWaitingColor].ToString()) == i;
 
-            if(correct) AudioController.PlaySoundEffect(simonSoundsBundleName, colorSoundNames[i]);
-            else AudioController.PlaySoundEffect(simonSoundsBundleName, errorSoundName);
+            if(correct) SimonSaysSoundController.PlaySimonSound(i);
+            else SimonSaysSoundController.PlayWrongSound();
 
             yield return StartCoroutine(BrightPortionForTime(portionMaterials[i], timeBetweenLights));
             if(correct)
@@ -191,6 +178,8 @@ namespace DefinitiveScript
                     if(currentSequence == colorSequences.Length) 
                     {
                         endedPuzle = true;
+                        PuzleController.PuzleResolved(puzleID);
+                        SimonSaysSoundController.PlaySuccessSound();
                         FinishPuzle();
                     }
                 }
@@ -198,7 +187,6 @@ namespace DefinitiveScript
             else
             {
                 playerTurn = false;
-                AudioController.StopSoundEffect();
             }
 
             onSequence = false;
@@ -206,8 +194,6 @@ namespace DefinitiveScript
 
         protected override void FinishPuzle()
         {
-            AudioController.PlayRandomSoundEffectFromGenre(successSoundsBundleName);
-
             base.FinishPuzle();
 
             ExitFromPuzle();

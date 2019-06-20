@@ -27,7 +27,7 @@ public class OpenChest : MonoBehaviour
         if ((other.gameObject.tag == "Player") && (spacePressed)/*&& (Input.GetKeyDown(KeyCode.Space))*/) {
             //nearChest = true; 
            //if() print("cosas");
-             GameManager.Instance.LocalPlayer.finishedGame = true; 
+             GameManager.Instance.LocalPlayer.playerOff = true; 
               Debug.Log("ey");
             other.gameObject.active = false;
             GetComponent<Animator>().SetBool("isOpening", true);

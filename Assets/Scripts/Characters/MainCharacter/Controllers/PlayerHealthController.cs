@@ -15,6 +15,15 @@ namespace DefinitiveScript
             }
         }
 
+        private SceneController m_SceneController;
+        public SceneController SceneController
+        {
+            get {
+                if(m_SceneController == null) m_SceneController = GameManager.Instance.SceneController;
+                return m_SceneController;
+            }
+        }
+
         public PlayerUIController PlayerUIController;
 
         public float initialReloadEnergy = 100f;
@@ -58,11 +67,11 @@ namespace DefinitiveScript
                 if(health <= 0f)
                 {   
 
-                    GameManager.Instance.AIEnemyController.PlayerDead();
+                    GameObject.FindWithTag("AIEnemyController").GetComponent<AIEnemyController>().PlayerDead();
 
-                    GameManager.Instance.SceneController.ShowDeathText();
+                    SceneController.ShowDeathText();
 
-                    GetComponent<PlayerBehaviour>().stopInput = true;
+                    GetComponent<PlayerBehaviour>().playerOff = true;
                     CharacterBehaviour.SetAlive(false);
 
                     
@@ -147,12 +156,28 @@ namespace DefinitiveScript
         {
             hasKey = true;
 
-            PlayerUIController.EnableKey(true);
+            PlayerUIController.ObtainKey(true);
         }
 
         public bool HasKey()
         {
             return hasKey;
+        }
+
+        public void LoadPlayerData()
+        {
+            health = SceneController.LoadPlayerHealth();
+            currentMoney = SceneController.LoadPlayerMoney();
+            hasKey = SceneController.LoadPlayerHasKey();
+
+            PlayerUIController.ChangeHealthBar(health);
+            PlayerUIController.ChangeMoney(currentMoney);
+            PlayerUIController.EnableKey(hasKey);
+        }
+
+        public void SavePlayerData()
+        {
+            SceneController.SavePlayerData(health, currentMoney, hasKey);
         }
     }
 }

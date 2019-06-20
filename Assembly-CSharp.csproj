@@ -172,8 +172,6 @@
      <Compile Include="Assets\Scripts\Items\MoneySackBehaviour.cs" />
      <Compile Include="Assets\Scripts\Items\OpenChest.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\AIEnemyController.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\AssetBundles\BundleController.cs" />
-     <Compile Include="Assets\Scripts\Miscelanea\AssetBundles\SoundData.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\Camera\CameraRotator.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\Camera\CursorController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\Camera\ExtendedFlycam.cs" />
@@ -185,6 +183,7 @@
      <Compile Include="Assets\Scripts\Miscelanea\PointToBoatstation.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SceneController &amp; Transitions\CavernEntry.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SceneController &amp; Transitions\DockController.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\SceneController &amp; Transitions\GameData.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SceneController &amp; Transitions\SceneController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\BoatSceneSoundController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\CavernSceneSoundController.cs" />
@@ -192,15 +191,17 @@
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\IslandSceneSoundController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\MainMenuSoundController.cs" />
      <Compile Include="Assets\Scripts\Puzzles\ArrowButtonBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Puzzles\AudioController.cs" />
      <Compile Include="Assets\Scripts\Puzzles\ExtDebug.cs" />
      <Compile Include="Assets\Scripts\Puzzles\FourBallsPuzle.cs" />
      <Compile Include="Assets\Scripts\Puzzles\MazePuzle.cs" />
      <Compile Include="Assets\Scripts\Puzzles\Puzle.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzleController.cs" />
+     <Compile Include="Assets\Scripts\Puzzles\PuzleSoundController.cs" />
      <Compile Include="Assets\Scripts\Puzzles\PuzleTrigger.cs" />
      <Compile Include="Assets\Scripts\Puzzles\SimonSays.cs" />
+     <Compile Include="Assets\Scripts\Puzzles\SimonSaysSoundController.cs" />
      <Compile Include="Assets\Scripts\Puzzles\VisualPuzle.cs" />
+     <Compile Include="Assets\Scripts\Puzzles\VisualPuzleSoundController.cs" />
      <None Include="Assets\AssetPacks\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Scripts\Shaders\ToonBasic.shader" />
      <None Include="Assets\Scripts\BoatPhysics\WaterSurfaceShader.shader" />

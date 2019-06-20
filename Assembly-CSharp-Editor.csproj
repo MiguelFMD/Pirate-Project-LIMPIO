@@ -87,11 +87,8 @@
      <Compile Include="Assets\AssetPacks\PostProcessing\Editor\Utils\EditorResources.cs" />
      <Compile Include="Assets\AssetPacks\PostProcessing\Editor\Utils\FxStyles.cs" />
      <Compile Include="Assets\AssetPacks\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
-     <Compile Include="Assets\Scripts\Editor\BuildAssetBundle.cs" />
      <Compile Include="Assets\Scripts\Editor\ExportTerrain.cs" />
-     <Compile Include="Assets\Scripts\Editor\jaja\SimonSaysCustomInspector.cs" />
      <Compile Include="Assets\Scripts\Editor\RaiseHeightmap.cs" />
-     <Compile Include="Assets\Scripts\Editor\SoundDataEditor.cs" />
  <Reference Include="Cinemachine">
  <HintPath>C:/Users/halva/Documents/GitHub/Pirate-Project-LIMPIO/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>

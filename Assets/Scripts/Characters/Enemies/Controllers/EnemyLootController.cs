@@ -20,16 +20,10 @@ public class EnemyLootController : MonoBehaviour
 
     public ParticleSystem hasKeyParticleSystem;
 
-    private bool hasKey;
+    private bool hasKey = false;
 
     public GameObject releasePoint;
     public float releaseForce = 75f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        hasKey = false;
-    }
 
     public void SetHasKey(bool value)
     {

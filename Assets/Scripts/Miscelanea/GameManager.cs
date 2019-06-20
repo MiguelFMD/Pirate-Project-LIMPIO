@@ -24,9 +24,6 @@ namespace DefinitiveScript
 
                     m_Instance.gameObject.AddComponent<CursorController>();
                     m_Instance.gameObject.AddComponent<InputController>();
-                    m_Instance.gameObject.AddComponent<AudioController>();
-                    m_Instance.gameObject.AddComponent<BundleController>();
-                    m_Instance.gameObject.AddComponent<AIEnemyController>();
                 }
 
                 return m_Instance;
@@ -41,31 +38,6 @@ namespace DefinitiveScript
                     m_InputController = m_Instance.gameObject.GetComponent<InputController>();
                 }
                 return m_InputController;
-            }
-        }
-
-        private AudioController m_AudioController;
-        public AudioController AudioController {
-            get {
-                if(m_AudioController == null)
-                {
-                    m_AudioController = m_Instance.gameObject.GetComponent<AudioController>();
-                    m_AudioController.BackgroundMusicSource = m_Instance.gameObject.AddComponent<AudioSource>();
-                    m_AudioController.SoundEffectSource = m_Instance.gameObject.AddComponent<AudioSource>();
-                }
-                return m_AudioController;
-            }
-        }
-
-        private BundleController m_BundleController;
-        public BundleController BundleController
-        {
-            get {
-                if(m_BundleController == null)
-                {
-                    m_BundleController = m_Instance.gameObject.GetComponent<BundleController>();
-                }
-                return m_BundleController;
             }
         }
 
@@ -98,14 +70,6 @@ namespace DefinitiveScript
 
             set {
                 m_SceneController = value;
-            }
-        }
-
-        private AIEnemyController m_AIEnemyController;
-        public AIEnemyController AIEnemyController {
-            get {
-                if(m_AIEnemyController == null) m_AIEnemyController = m_Instance.gameObject.GetComponent<AIEnemyController>();
-                return m_AIEnemyController;
             }
         }
     }

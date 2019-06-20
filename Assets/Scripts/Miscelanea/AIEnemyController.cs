@@ -5,7 +5,6 @@ using DefinitiveScript;
 
 public class AIEnemyController : MonoBehaviour
 {
-    private Transform playerTransform;
     private bool playerDetect;
 
     private GameObject[] enemyObjects;
@@ -76,6 +75,8 @@ public class AIEnemyController : MonoBehaviour
         if(enemiesDetectedPlayer == null) enemiesDetectedPlayer = new bool[enemies.Length];
         enemiesDetectedPlayer[enemyID] = value;
 
+        print("value " + value + " playerDetect " + playerDetect);
+
         if(!value && playerDetect)
         {
             bool aux = false;
@@ -87,6 +88,8 @@ public class AIEnemyController : MonoBehaviour
                 }
             }
 
+            print("aux " + aux);
+
             if(!aux) CavernSceneSoundController.PlayCavernTheme();
 
             playerDetect = aux;
@@ -97,6 +100,5 @@ public class AIEnemyController : MonoBehaviour
 
             playerDetect = value;
         }
-        
     }
 }

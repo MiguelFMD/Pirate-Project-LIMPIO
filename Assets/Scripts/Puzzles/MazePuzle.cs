@@ -21,6 +21,15 @@ namespace DefinitiveScript
             }
         }
 
+        private PuzleSoundController m_PuzleSoundController;
+        public PuzleSoundController PuzleSoundController
+        {
+            get {
+                if(m_PuzleSoundController == null) m_PuzleSoundController = GetComponent<PuzleSoundController>();
+                return m_PuzleSoundController;
+            }
+        }
+
         public float ballSpeed = 5f;
         public float ballAcceleration = 2f;
         private Vector2 direction;
@@ -104,7 +113,8 @@ namespace DefinitiveScript
                 if(distance < finishDistance)
                 {
                     endedPuzle = true;
-                    PuzleController.PuzleResolved();
+                    PuzleController.PuzleResolved(puzleID);
+                    PuzleSoundController.PlaySuccessSound();
                     FinishPuzle();
                 }
             }

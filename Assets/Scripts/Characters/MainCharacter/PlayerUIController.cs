@@ -41,11 +41,10 @@ public class PlayerUIController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        barMaxWidth = healthBarFill.sizeDelta.x;
-        barHeight = healthBarFill.sizeDelta.y;
+    void Awake()
+    {        
+        barMaxWidth = staminaBarFill.sizeDelta.x;
+        barHeight = staminaBarFill.sizeDelta.y;
 
         currentMoney = 0;
         newMoney = currentMoney;
@@ -180,9 +179,28 @@ public class PlayerUIController : MonoBehaviour
         if(newMoney < 0) newMoney = 0;
     }
 
-    public void EnableKey(bool value)
+    public void ObtainKey(bool value)
     {
         if(value) PlayerUISoundController.PlayPickKey();
+        if(value) keyImage.color = keyEnabledColor;
+        else keyImage.color = keyDisabledColor;
+    }
+
+    public void ChangeHealthBar(float currentValue)
+    {
+        newHealthBarWidth = (currentValue * barMaxWidth) / 100;
+        healthBarFill.sizeDelta = new Vector2(newHealthBarWidth, barHeight);
+    }
+    
+    public void ChangeMoney(int newMoney)
+    {
+        currentMoney = newMoney;
+        this.newMoney = newMoney;
+        moneyText.text = currentMoney.ToString();
+    }
+
+    public void EnableKey(bool value)
+    {
         if(value) keyImage.color = keyEnabledColor;
         else keyImage.color = keyDisabledColor;
     }
