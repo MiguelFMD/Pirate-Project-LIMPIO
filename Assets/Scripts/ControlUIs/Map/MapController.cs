@@ -15,57 +15,37 @@ public class MapController : MonoBehaviour
     private float orthographicSize;
     private int priority = -1;
 
+    private bool activatedMap;
+
+    private PlayerBehaviour m_Player;
+    public PlayerBehaviour Player {
+        get {
+            if(m_Player == null) m_Player = GameManager.Instance.LocalPlayer;
+            return m_Player;
+        }
+    }
+
+    public CinemachineVirtualCamera virtualCamera;
+
+    public int activePriority = 20;
+    public int deactivePriority = -20;
+
     void Start()
     {
-        cam = Camera.main;
-        playerIcon.SetActive(false);
-        map.SetActive(false);
-        desiredPos = playerIcon.GetComponent<Transform>().position;
-        orthographicSize = vcam.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize;
+        CloseMap();
     }
-    void Update()
+
+    public void OpenMap()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            GameManager.Instance.LocalPlayer.stopInput = !GameManager.Instance.LocalPlayer.stopInput;
-            vcam.GetComponent<CinemachineVirtualCamera>().Priority = vcam.GetComponent<CinemachineVirtualCamera>().Priority * priority;
-            if (cam.orthographic)
-            {
-                playerIcon.SetActive(false);
-                map.SetActive(false);
-                cam.orthographic = false;
-                inMap = false;
-            }
-            else
-            {
-                playerIcon.SetActive(true);
-                map.SetActive(true);
-                cam.orthographic = true;
-                inMap = true;
-            }
-        }
-        if (inMap)
-        {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f ) // forward
-            {
-                orthographicSize = orthographicSize - 10;
-                if(orthographicSize < 50)
-                {
-                    orthographicSize = 50; // Min size 
-                }
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f ) // backwards
-            {
-                orthographicSize = orthographicSize + 10;
-                if(orthographicSize > 100)
-                {
-                    orthographicSize = 100; // Max size 
-                }
-            }
-            vcam.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = orthographicSize;
-        }
-        desiredPos.x = playerPos.position.x / 4.7673f;
-        desiredPos.z = playerPos.position.z / 4.7673f;
-        playerIcon.GetComponent<Transform>().position = desiredPos;
+        activatedMap = true;
+        RenderSettings.fog = false;
+        virtualCamera.m_Priority = activePriority;
+    }
+
+    public void CloseMap()
+    {
+        activatedMap = false;
+        RenderSettings.fog = true;
+        virtualCamera.m_Priority = deactivePriority;
     }
 }

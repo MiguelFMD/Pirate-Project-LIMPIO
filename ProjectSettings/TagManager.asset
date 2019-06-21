@@ -16,7 +16,7 @@ TagManager:
   - AIEnemyController
   - BoatDock
   - PlayerDock
-  - boatStation
+  - MapUI
   layers:
   - Default
   - TransparentFX

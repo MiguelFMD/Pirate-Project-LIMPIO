@@ -171,6 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4220885053254859210}
   - component: {fileID: 4220885053254859211}
+  - component: {fileID: 1394771019}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: SceneController
@@ -208,6 +209,21 @@ MonoBehaviour:
   blackScreen: {fileID: 7066903775734821034}
   deathText: {fileID: 1871616388}
   fadingTime: 1
+--- !u!114 &1394771019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220885053254859208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e011fbd90cd2d346b9911d15452c08e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalAudioMixer: {fileID: 24100000, guid: 8d720b75263d0a24fa358016360f134b, type: 2}
+  maxVolume: 10
+  minVolume: -80
 --- !u!1 &7066903775734821035
 GameObject:
   m_ObjectHideFlags: 0

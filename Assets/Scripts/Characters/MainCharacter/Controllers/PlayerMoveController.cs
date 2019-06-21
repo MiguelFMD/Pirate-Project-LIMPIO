@@ -40,27 +40,6 @@ namespace DefinitiveScript
             controller.Move(newPosition);
         }
 
-        /*public void YRotate(float mouseInput, float mouseSensitivity, Vector3 targetDirection, bool movementMode)
-        {
-            if(movementMode) //Gun mode
-            {
-                transform.Rotate(Vector3.up * mouseInput * mouseSensitivity, Space.World); //Si se está en modo pistola, gira sobre el eje Y en función del input recibido
-            }
-            else //Sable mode
-            {
-                Vector3 lookDirection = targetDirection.normalized; //Si se está en modo sable, se utiliza la dirección objetivo para girar al personaje hacia esa dirección
-                if(lookDirection != Vector3.zero)
-                {
-                    Quaternion newRotation = Quaternion.LookRotation(lookDirection, transform.up);
-                    float differenceRotation = newRotation.eulerAngles.y - transform.eulerAngles.y;
-                    float eulerY = newRotation.eulerAngles.y;
-                    
-                    Vector3 euler = new Vector3(transform.eulerAngles.x, eulerY, transform.eulerAngles.z);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), rotationSpeed * Time.deltaTime); //Se realiza un giro interpolado
-                }
-            }
-        }*/
-
         public void GunRotate(Vector2 mouseInput, Vector2 mouseSensitivity)
         {
             transform.Rotate(Vector3.up * mouseInput.x * mouseSensitivity.x, Space.World);        

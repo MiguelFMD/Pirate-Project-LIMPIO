@@ -132,6 +132,12 @@ namespace DefinitiveScript
             if(aux != null) enterIntoCavernSpawnPoint = aux.transform;
         }
 
+        private MapUIController FindMapUI()
+        {
+            GameObject aux = GameObject.FindWithTag("MapUI");
+            return aux.GetComponent<MapUIController>();
+        }
+
         private void InitializeScene(Scene scene, LoadSceneMode mode)
         {
             deathText.enabled = false;        
@@ -186,6 +192,7 @@ namespace DefinitiveScript
                     FindIslandDocks();
                     FindExitCavernSpawnPoint();
                     FindBoat();
+                    FindMapUI().ChangeBoatPosition(dockID);
 
                     PlayerBehaviour.stopInput = true;
                     if(lastScene == boatSceneID)
