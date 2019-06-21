@@ -76,11 +76,6 @@ namespace DefinitiveScript
             InitializeScene(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         }
 
-        void Update() 
-        {
-
-        }
-
         private void FindPlayer()
         {
             GameObject aux = GameObject.Find("Player");
@@ -107,12 +102,22 @@ namespace DefinitiveScript
 
         private void FindBoatDocks()
         {
-            BoatDocks = FindObjectsOfType<DockController>();
+            GameObject[] aux = GameObject.FindGameObjectsWithTag("BoatDock");
+            BoatDocks = new DockController[aux.Length];
+            for(int i = 0; i < aux.Length; i++)
+            {
+                BoatDocks[i] = aux[i].GetComponent<DockController>();
+            }
         }
 
         private void FindIslandDocks()
         {
-            IslandDocks = FindObjectsOfType<DockController>();
+            GameObject[] aux = GameObject.FindGameObjectsWithTag("PlayerDock");
+            IslandDocks = new DockController[aux.Length];
+            for(int i = 0; i < aux.Length; i++)
+            {
+                IslandDocks[i] = aux[i].GetComponent<DockController>();
+            }
         }
 
         private void FindExitCavernSpawnPoint()
@@ -159,16 +164,17 @@ namespace DefinitiveScript
                     }
                     else if(lastScene == islandSceneID)
                     {
-                        Vector3 dockDestinationPoint = Vector3.zero;
+                        Transform dockDestinationPoint = null;
                         for(int i = 0; i < BoatDocks.Length; i++)
                         {
                             if(BoatDocks[i].dockID == dockID)
                             {
-                                dockDestinationPoint = BoatDocks[i].boatSpawnPoint.position;
+                                dockDestinationPoint = BoatDocks[i].boatSpawnPoint;
                                 break;
                             } 
                         }
-                        BoatTransform.position = dockDestinationPoint;
+                        BoatTransform.position = dockDestinationPoint.position;
+                        BoatTransform.rotation = dockDestinationPoint.rotation;
                     }
                     
                     yield return StartCoroutine(FadeIn(fadingTime));
@@ -179,6 +185,7 @@ namespace DefinitiveScript
                     FindPlayer();
                     FindIslandDocks();
                     FindExitCavernSpawnPoint();
+                    FindBoat();
 
                     PlayerBehaviour.stopInput = true;
                     if(lastScene == boatSceneID)
@@ -197,6 +204,15 @@ namespace DefinitiveScript
                     else if(lastScene == cavernSceneID)
                     {
                         PlayerBehaviour.transform.position = exitFromCavernSpawnPoint.position;
+                    }
+
+                    for(int i = 0; i < IslandDocks.Length; i++)
+                    {
+                        if(IslandDocks[i].dockID == dockID)
+                        {
+                            BoatTransform.position = IslandDocks[i].boatDockedPoint.position;
+                            BoatTransform.rotation = IslandDocks[i].boatDockedPoint.rotation;
+                        }
                     }
 
                     yield return StartCoroutine(FadeIn(fadingTime));

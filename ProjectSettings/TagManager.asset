@@ -11,10 +11,12 @@ TagManager:
   - Boat
   - Arrow
   - cavernEntrance
-  - boatStation
   - SceneController
   - SoundController
   - AIEnemyController
+  - BoatDock
+  - PlayerDock
+  - boatStation
   layers:
   - Default
   - TransparentFX

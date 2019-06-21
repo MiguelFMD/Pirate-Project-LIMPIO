@@ -141,7 +141,7 @@ public class EndlessWaterSquare : MonoBehaviour
                 if(x == 0 && z == 0) continue;
 
                 //The y-Pos should be lower than the square with high resolution to avoid an ugly seam
-                float yPos = -0.5f;
+                float yPos = 0f; //-0.5f;
                 AddWaterPlane(x * squareWidth, z * squareWidth, yPos, squareWidth, outerSuqareResolution, outerSuqareResolution);
             }
         }
