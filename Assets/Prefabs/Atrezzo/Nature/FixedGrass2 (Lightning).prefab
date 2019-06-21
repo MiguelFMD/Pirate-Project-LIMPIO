@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4084347330902727831}
   - component: {fileID: 7922627438034253855}
   m_Layer: 0
-  m_Name: FixedGrass4
+  m_Name: FixedGrass2 (Lightning)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
