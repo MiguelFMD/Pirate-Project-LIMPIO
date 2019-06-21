@@ -160,6 +160,7 @@
      <Compile Include="Assets\Scripts\Characters\MainCharacter\StateMachineBehaviour\PlayerUnlockedTargetMovementBehaviour.cs" />
      <Compile Include="Assets\Scripts\Characters\MainCharacter\SwordCollisionDetector.cs" />
      <Compile Include="Assets\Scripts\Characters\SableController.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\AudioSettings.cs" />
      <Compile Include="Assets\Scripts\ControlUIs\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\ControlUIs\Map\DisplayIcon.cs" />
      <Compile Include="Assets\Scripts\ControlUIs\Map\DisplayXIcon.cs" />
@@ -190,6 +191,7 @@
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\GeneralSoundController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\IslandSceneSoundController.cs" />
      <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\MainMenuSoundController.cs" />
+     <Compile Include="Assets\Scripts\Miscelanea\SoundControllers\VolumeController.cs" />
      <Compile Include="Assets\Scripts\Puzzles\ArrowButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\Puzzles\ExtDebug.cs" />
      <Compile Include="Assets\Scripts\Puzzles\FourBallsPuzle.cs" />

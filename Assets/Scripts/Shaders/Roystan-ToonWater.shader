@@ -53,6 +53,7 @@
 
             #pragma vertex vert
             #pragma fragment frag
+			#pragma multi_compile_fog
 
             #include "UnityCG.cginc"
 
@@ -76,6 +77,7 @@
 
             struct v2f
             {
+				UNITY_FOG_COORDS(3)
                 float4 vertex : SV_POSITION;	
 				float2 noiseUV : TEXCOORD0;
 				float2 distortUV : TEXCOORD1;
@@ -98,6 +100,8 @@
 				o.distortUV = TRANSFORM_TEX(v.uv, _SurfaceDistortion);
 				o.noiseUV = TRANSFORM_TEX(v.uv, _SurfaceNoise);
 				o.viewNormal = COMPUTE_VIEW_NORMAL;
+
+				UNITY_TRANSFER_FOG(o, o.vertex);
 
                 return o;
             }
@@ -163,8 +167,12 @@
 				float4 surfaceNoiseColor = _FoamColor;
 				surfaceNoiseColor.a *= surfaceNoise;
 
+				fixed4 col = alphaBlend(surfaceNoiseColor, waterColor);
+
+				UNITY_APPLY_FOG(i.fogCoord, col);
+
 				// Use normal alpha blending to combine the foam with the surface.
-				return alphaBlend(surfaceNoiseColor, waterColor);
+				return col;
             }
             ENDCG
         }

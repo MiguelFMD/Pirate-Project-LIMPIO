@@ -10,6 +10,7 @@ public class DockController : MonoBehaviour
     public int dockID;
     public Transform boatSpawnPoint;
     public Transform playerSpawnPoint;
+    public Transform boatDockedPoint;
 
     private SceneController m_SceneController;
     public SceneController SceneController {

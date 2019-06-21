@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resume()
     {
-        if(GameManager.Instance.LocalPlayer != null) GameManager.Instance.LocalPlayer.stopInput = false;
+        if(GameManager.Instance.LocalPlayer != null) GameManager.Instance.LocalPlayer.playerOff = false;
 
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
     }
     private void Pause()
     {
-        if(GameManager.Instance.LocalPlayer != null) GameManager.Instance.LocalPlayer.stopInput = true;
+        if(GameManager.Instance.LocalPlayer != null) GameManager.Instance.LocalPlayer.playerOff = true;
         previouslyLockedCursor = GameManager.Instance.CursorController.LockedCursor();
 
         pauseMenuUI.SetActive(true);
