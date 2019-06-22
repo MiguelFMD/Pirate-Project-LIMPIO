@@ -69,9 +69,8 @@ namespace DefinitiveScript
 
                     GameObject.FindWithTag("AIEnemyController").GetComponent<AIEnemyController>().PlayerDead();
 
-                    SceneController.ShowDeathText();
+                    SceneController.PlayDeath();
 
-                    GetComponent<PlayerBehaviour>().playerOff = true;
                     CharacterBehaviour.SetAlive(false);
 
                     
@@ -178,6 +177,11 @@ namespace DefinitiveScript
         public void SavePlayerData()
         {
             SceneController.SavePlayerData(health, currentMoney, hasKey);
+        }
+
+        public int GetCurrentMoney()
+        {
+            return currentMoney;
         }
     }
 }

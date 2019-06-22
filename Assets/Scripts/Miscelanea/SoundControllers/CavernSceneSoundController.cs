@@ -15,9 +15,12 @@ public class CavernSceneSoundController : GeneralSoundController
 
     public void PlayActionTheme()
     {
-        if(!actionTheme.isPlaying) actionTheme.Play();
-        StartCoroutine(FadeOutClip(1.0f, cavernTheme));
-        StartCoroutine(FadeInClip(1.0f, actionTheme));
+        if(!actionTheme.isPlaying)
+        {
+            actionTheme.Play();
+            StartCoroutine(FadeOutClip(1.0f, cavernTheme));
+            StartCoroutine(FadeInClip(1.0f, actionTheme));
+        }
     }
 
     public override void FadeOutTheme()

@@ -13,17 +13,15 @@ namespace DefinitiveScript
         private PlayerBehaviour PlayerBehaviour;
         private PlayerHealthController PlayerHealthController;
         private Transform BoatTransform;
-        private GameObject GM;
 
         public Image blackScreen;
         public TextMeshProUGUI deathText;
+        public GameObject scoreScreen;
 
         public float fadingTime = 0.5f;
 
         private int lastScene;
         private int dockID;
-        
-        private bool changedScene = false;
 
         private DockController[] BoatDocks;
         private DockController[] IslandDocks;
@@ -41,8 +39,16 @@ namespace DefinitiveScript
 
         private GameData gameData;
 
+        private float gameTimer;
+        private bool startedTimer;
+
+        public AudioSource gameOverSource;
+
         void Awake()
         {
+            gameTimer = 0f;
+            startedTimer = false;
+
             GameObject[] objs = GameObject.FindGameObjectsWithTag("SceneController");
 
             if(objs.Length > 1 && !created)
@@ -74,6 +80,19 @@ namespace DefinitiveScript
 
             blackScreen.enabled = false;
             InitializeScene(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        }
+
+        void Update()
+        {
+            if(startedTimer)
+            {
+                gameTimer += Time.deltaTime;
+            }
+
+            if(Input.GetKeyDown(KeyCode.T))
+            {
+                StartScoreScreen();
+            }
         }
 
         private void FindPlayer()
@@ -153,6 +172,7 @@ namespace DefinitiveScript
             {
                 if(scene.buildIndex == mainMenuID)
                 {
+                    ResetGameTimer();
                     GameManager.Instance.CursorController.UnlockCursor();
                     yield return StartCoroutine(FadeIn(fadingTime));
                 }
@@ -163,6 +183,8 @@ namespace DefinitiveScript
                     FindBoatInitialPoint();
                     FindBoat();
                     FindBoatDocks();
+                    
+                    StartGameTimer();
 
                     if(lastScene == mainMenuID)
                     {
@@ -193,6 +215,8 @@ namespace DefinitiveScript
                     FindExitCavernSpawnPoint();
                     FindBoat();
                     FindMapUI().ChangeBoatPosition(dockID);
+                    
+                    StartGameTimer();
 
                     PlayerBehaviour.stopInput = true;
                     if(lastScene == boatSceneID)
@@ -231,6 +255,8 @@ namespace DefinitiveScript
                     GameManager.Instance.CursorController.LockCursor();
                     FindPlayer();
                     FindEnterCavernSpawnPoint();
+                    
+                    StartGameTimer();
 
                     if(lastScene == islandSceneID || lastScene == cavernSceneID)
                     {   
@@ -252,7 +278,6 @@ namespace DefinitiveScript
             soundController.FadeOutTheme();
 
             lastScene = SceneManager.GetActiveScene().buildIndex;
-            changedScene = true;
             yield return StartCoroutine(FadeOut(fadingTime));
 
             SceneManager.LoadScene(sceneID);
@@ -267,6 +292,13 @@ namespace DefinitiveScript
         public void StartGame()
         {
             StartCoroutine(ChangeToScene(boatSceneID));
+        }
+
+        public void FinishGame()
+        {
+            scoreScreen.SetActive(false);
+            ResetGameData();
+            SceneManager.LoadScene(mainMenuID);
         }
 
         public void DockTheBoat(int dockID)
@@ -296,11 +328,14 @@ namespace DefinitiveScript
             StartCoroutine(ChangeToScene(islandSceneID));
         }
 
-        public void ShowDeathText()
+        public void PlayDeath()
         {
             ResetGameData();
+
             deathText.enabled = true;
             StartCoroutine(FadeInDeathText(1.5f));
+
+            soundController.FadeOutTheme();
         }
 
         private IEnumerator FadeInDeathText(float time)
@@ -337,11 +372,26 @@ namespace DefinitiveScript
             deathText.color = c;
 
             deathTextTransform.localScale = finalScale;
+            
+            gameOverSource.Play();
         }
 
         public void PlayerDead()
         {
             StartCoroutine(ChangeToScene(SceneManager.GetActiveScene().buildIndex));
+        }
+
+        public void StartScoreScreen()
+        {
+            GameManager.Instance.CursorController.UnlockCursor();
+            PauseGameTimer();
+
+            soundController.FadeOutTheme();
+
+            StartCoroutine(FadeOut(1.0f));
+
+            scoreScreen.SetActive(true);
+            scoreScreen.GetComponent<ScoreScreenController>().Play(1.0f, PlayerHealthController.GetCurrentMoney(), gameTimer);
         }
 
         private IEnumerator FadeOut(float time)
@@ -444,6 +494,27 @@ namespace DefinitiveScript
         public void ResetGameData()
         {
             gameData.Reset();
+        }
+
+        public void StartGameTimer()
+        {
+            startedTimer = true;
+        }
+
+        public void PauseGameTimer()
+        {
+            startedTimer = false;
+        }
+
+        public void ResetGameTimer()
+        {
+            startedTimer = false;
+            gameTimer = 0.0f;
+        }
+
+        public float GetGameTimer()
+        {
+            return gameTimer;
         }
     }
 }
