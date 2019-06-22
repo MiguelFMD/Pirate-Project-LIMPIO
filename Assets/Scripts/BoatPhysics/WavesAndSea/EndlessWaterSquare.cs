@@ -12,9 +12,9 @@ public class EndlessWaterSquare : MonoBehaviour
     public GameObject bottomSqrObj;
 
     //Water square data
-    private float squareWidth = 800f;
-    private float innerSquareResolution = 5f;
-    private float outerSuqareResolution = 25f;
+    private float squareWidth = 600f;
+    private float innerSquareResolution = 10f;
+    private float outerSuqareResolution = 30f;
 
     //The list with all water mesh squares == the entire ocean we can see
     List<WaterSquare> waterSquares = new List<WaterSquare>();

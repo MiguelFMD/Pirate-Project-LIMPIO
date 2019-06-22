@@ -93,3 +93,4 @@ MonoBehaviour:
   boatObj: {fileID: 0}
   waterSqrObj: {fileID: 0}
   bottomSqrObj: {fileID: 0}
+  seaBottomDepth: 5

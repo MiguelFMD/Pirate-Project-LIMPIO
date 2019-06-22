@@ -35,6 +35,11 @@ namespace DefinitiveScript
         private int islandSceneID = 2;
         private int cavernSceneID = 3;
 
+        public float mainMenuLODBias = 1.5f;
+        public float boatSceneLODBias = 3.5f;
+        public float islandSceneLODBias = 1.5f;
+        public float cavernSceneLODBias = 2f;
+
         private GeneralSoundController soundController;
 
         private GameData gameData;
@@ -172,12 +177,16 @@ namespace DefinitiveScript
             {
                 if(scene.buildIndex == mainMenuID)
                 {
+                    QualitySettings.lodBias = mainMenuLODBias;
+
                     ResetGameTimer();
                     GameManager.Instance.CursorController.UnlockCursor();
                     yield return StartCoroutine(FadeIn(fadingTime));
                 }
                 else if(scene.buildIndex == boatSceneID)
                 {
+                    QualitySettings.lodBias = boatSceneLODBias;
+
                     GameManager.Instance.CursorController.LockCursor();
 
                     FindBoatInitialPoint();
@@ -209,6 +218,8 @@ namespace DefinitiveScript
                 }
                 else if(scene.buildIndex == islandSceneID)
                 {
+                    QualitySettings.lodBias = islandSceneLODBias;
+
                     GameManager.Instance.CursorController.LockCursor();
                     FindPlayer();
                     FindIslandDocks();
@@ -252,6 +263,8 @@ namespace DefinitiveScript
                 }
                 else if(scene.buildIndex == cavernSceneID)
                 {
+                    QualitySettings.lodBias = cavernSceneLODBias;
+
                     GameManager.Instance.CursorController.LockCursor();
                     FindPlayer();
                     FindEnterCavernSpawnPoint();
