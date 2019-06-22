@@ -36,6 +36,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 7523005010335092927}
+  - {fileID: 849869383579038527}
   - {fileID: 6423922581195262840}
   m_Father: {fileID: 800827330538688292}
   m_RootOrder: 3
@@ -1400,6 +1401,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 208698570}
+--- !u!1 &30204051433044103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 849869383579038527}
+  - component: {fileID: 4897478003978894130}
+  - component: {fileID: 2581930379246731214}
+  m_Layer: 5
+  m_Name: GunTargetMark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &849869383579038527
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30204051433044103}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3999999, y: 2.3999999, z: 2.3999999}
+  m_Children: []
+  m_Father: {fileID: 385904799}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4897478003978894130
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30204051433044103}
+  m_CullTransparentMesh: 0
+--- !u!114 &2581930379246731214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30204051433044103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 9b901b0342008d345a7c96c77616dfe5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &63117829191666073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,7 +1623,7 @@ GameObject:
   - component: {fileID: 3179813764409843413}
   - component: {fileID: 2816328201643209702}
   m_Layer: 5
-  m_Name: TargetMark
+  m_Name: SableTargetMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1679,7 +1754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745291272293239841}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.43, y: 9.4, z: 117}
+  m_LocalPosition: {x: -7.43, y: 0, z: 19.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2265947023262920695}
@@ -1813,7 +1888,7 @@ MonoBehaviour:
   effectsDisplayTime: 0.1
   effectObject: {fileID: 4081055269851798899}
   scopeMarkCamera: {fileID: 4081055269985041083}
-  scopeMarkOverlay: {fileID: 359609145492675656}
+  scopeMarkOverlay: {fileID: 30204051433044103}
   shootableMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -2465,7 +2540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477661118506964160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.1715355, y: 10.15, z: 120.60098}
+  m_LocalPosition: {x: -7.4300003, y: 0.75, z: 23.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8354612610305228876}
@@ -9732,7 +9807,7 @@ RectTransform:
   - {fileID: 3496163939824205264}
   - {fileID: 4529104888540110739}
   m_Father: {fileID: 385904799}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9947,7 +10022,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8354612610305228877}
-  m_LocalRotation: {x: 0.013795585, y: -0.97285986, z: -0.06058675, w: -0.22289623}
+  m_LocalRotation: {x: 0.00008388772, y: 0.9980676, z: 0.06213742, w: -0.0000051851075}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10117,7 +10192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8354612610967032768}
-  m_LocalRotation: {x: -0.017929543, y: 0.971596, z: 0.07825377, w: 0.222612}
+  m_LocalRotation: {x: 0.000000041208857, y: -0.9967722, z: -0.0802815, w: -0.000000045306283}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10193,7 +10268,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8354612611432192913}
-  m_LocalRotation: {x: -0.021965053, y: 0.9700165, z: 0.095867075, w: 0.22225007}
+  m_LocalRotation: {x: 0.00000050313855, y: -0.9951518, z: -0.09835119, w: -0.00000009098414}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10642,8 +10717,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8354612611957197408}
-  m_LocalRotation: {x: 0.08672668, y: -0.0000000042853867, z: 3.7306283e-10, w: 0.99623215}
-  m_LocalPosition: {x: -7.700001, y: 11.12, z: 117}
+  m_LocalRotation: {x: 0.08672645, y: 0.000000029921104, z: -0.000000005238943, w: 0.9962322}
+  m_LocalPosition: {x: -7.7, y: 1.72, z: 19.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8354612610760023488}
@@ -10714,8 +10789,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8354612612135037955}
-  m_LocalRotation: {x: -0.021965051, y: 0.9700165, z: 0.095867075, w: 0.22225006}
-  m_LocalPosition: {x: -9.1715355, y: 10.15, z: 120.60098}
+  m_LocalRotation: {x: 0.0000000034886998, y: 0.9951518, z: 0.09835119, w: -0.000000035299884}
+  m_LocalPosition: {x: 48.07, y: 0.75, z: 23.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 800827330538688292}
@@ -10731,7 +10806,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.14117648, g: 0.14117648, b: 0.14117648, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
