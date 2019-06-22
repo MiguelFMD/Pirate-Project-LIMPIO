@@ -161,9 +161,7 @@
      <Compile Include="Assets\Scripts\Characters\MainCharacter\SwordCollisionDetector.cs" />
      <Compile Include="Assets\Scripts\Characters\SableController.cs" />
      <Compile Include="Assets\Scripts\ControlUIs\GeneralUIController.cs" />
-     <Compile Include="Assets\Scripts\ControlUIs\Map\DisplayIcon.cs" />
-     <Compile Include="Assets\Scripts\ControlUIs\Map\DisplayXIcon.cs" />
-     <Compile Include="Assets\Scripts\ControlUIs\Map\MapController.cs" />
+     <Compile Include="Assets\Scripts\ControlUIs\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\ControlUIs\Map\MapUIController.cs" />
      <Compile Include="Assets\Scripts\ControlUIs\PauseMenu\AudioSettings.cs" />
      <Compile Include="Assets\Scripts\ControlUIs\PauseMenu\LoadSceneOnClick.cs" />
