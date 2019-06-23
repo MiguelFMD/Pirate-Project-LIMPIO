@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DefinitiveScript;
 
 public class GeneralUIController : MonoBehaviour
 {
+    private InputController m_InputController;
+    public InputController InputController
+    {
+        get {
+            if(m_InputController == null) m_InputController = GameManager.Instance.InputController;
+            return m_InputController;
+        }
+    }
+
     public PauseMenu pauseMenu;
     public MapUIController mapUIController;
 
@@ -18,7 +28,7 @@ public class GeneralUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M) && mapUIController != null && !pausedMenu)
+        if(InputController.ToMap && mapUIController != null && !pausedMenu)
         {
             if(opennedMap)
             {
@@ -32,7 +42,7 @@ public class GeneralUIController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.P) && !opennedMap)
+        if(InputController.Pause && !opennedMap)
         {
             if(pausedMenu)
             {

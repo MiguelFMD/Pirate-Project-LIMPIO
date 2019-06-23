@@ -99,7 +99,7 @@ namespace DefinitiveScript
                             }
                         }
 
-                        if(InputController.ShootingInput && pointedPortion != null)
+                        if(InputController.Shooting && pointedPortion != null)
                         {
                             int i = GetPortionID(pointedPortion);
                             if(i != -1) StartCoroutine(CheckSelectedPortion(i));
@@ -113,7 +113,7 @@ namespace DefinitiveScript
                     }
                 }
 
-                if(Input.GetKeyDown(KeyCode.Z))
+                if(InputController.ExitFromPuzle)
                 {
                     FinishPuzle();
                 }

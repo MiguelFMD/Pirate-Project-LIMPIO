@@ -6,6 +6,15 @@ namespace DefinitiveScript
 {
     public class PuzleTrigger : MonoBehaviour
     {
+        private InputController m_InputController;
+        public InputController InputController
+        {
+            get {
+                if(m_InputController == null) m_InputController = GameManager.Instance.InputController;
+                return m_InputController;
+            }
+        }
+
         public VisualPuzle visualPuzle;
         public Puzle nextPuzle;
 
@@ -16,7 +25,7 @@ namespace DefinitiveScript
         void OnTriggerStay(Collider other)
         {
             PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
-            if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Space) && player.sableMode)
+            if(other.gameObject.tag == "Player" && InputController.EnterIntoPuzle && player.sableMode)
             {
                 if(firstTime)
                 {

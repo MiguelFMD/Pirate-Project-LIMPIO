@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DefinitiveScript;
 
 public class BoatEngine : MonoBehaviour
 {
+    private InputController m_InputController;
+    public InputController InputController
+    {
+        get {
+            if(m_InputController == null) m_InputController = GameManager.Instance.InputController;
+            return m_InputController;
+        }
+    }
+
     //Drags
     public Transform waterJetTransform;
     public Transform sailObjectTransform;
@@ -68,7 +78,7 @@ public class BoatEngine : MonoBehaviour
     void UserInput()
     {
         //Forward / reverse
-        if(Input.GetKey(KeyCode.W))
+        if(InputController.Vertical > 0f)
         {
             if(boatController.CurrentSpeed < 50f && currentJetPower < maxPower)
             {
@@ -86,7 +96,7 @@ public class BoatEngine : MonoBehaviour
         boatSoundController.ChangeSailingSoundVolume(currentJetPower / maxPower);
 
         //Steer left
-        if(Input.GetKey(KeyCode.A))
+        if(InputController.Horizontal < 0f)
         {
             WaterJetRotation_Y = waterJetTransform.localEulerAngles.y + steerVelocity * Time.deltaTime;
 
@@ -110,7 +120,7 @@ public class BoatEngine : MonoBehaviour
             BoatUIController.UpdateRudder(steerVelocity * Time.deltaTime * conversionFactor);
         }
         //Steer right
-        else if(Input.GetKey(KeyCode.D))
+        else if(InputController.Horizontal > 0f)
         {
             WaterJetRotation_Y = waterJetTransform.localEulerAngles.y - steerVelocity * Time.deltaTime;
 
@@ -133,7 +143,7 @@ public class BoatEngine : MonoBehaviour
 
             BoatUIController.UpdateRudder(-steerVelocity * Time.deltaTime * conversionFactor);
         }
-        else if(Input.GetKey(KeyCode.Space))
+        else if(InputController.CenterRudder)
         {
             WaterJetRotation_Y = 180f;
             
@@ -144,14 +154,14 @@ public class BoatEngine : MonoBehaviour
             BoatUIController.RestartRudder();
         }
 
-        if(Input.GetKey(KeyCode.R))
+        if(Input.GetKey(KeyCode.R)) //DevHack
         {
             RestartBoat();
             BoatUIController.RestartUI();
         }
 
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) boatSoundController.PlayTurningSailSound();
-        if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)) boatSoundController.StopTurningSailSound();
+        if(InputController.Horizontal != 0f) boatSoundController.PlayTurningSailSound();
+        if(InputController.Horizontal == 0f) boatSoundController.StopTurningSailSound();
 
         BoatUIController.UpdateCompass(transform.TransformDirection(Vector3.forward));
     }

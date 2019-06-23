@@ -12,12 +12,12 @@ namespace DefinitiveScript
 
         public Transform startPoint;
 
-        private InputController m_BallInputController;
-        public InputController ballInputController
+        private InputController m_InputController;
+        public InputController InputController
         {
             get {
-                if(m_BallInputController == null) m_BallInputController = GameManager.Instance.InputController;
-                return m_BallInputController;
+                if(m_InputController == null) m_InputController = GameManager.Instance.InputController;
+                return m_InputController;
             }
         }
 
@@ -79,13 +79,13 @@ namespace DefinitiveScript
         {
             if(onPuzle)
             {
-                direction.x = Mathf.Lerp(direction.x, ballInputController.Horizontal, 1f / ballAcceleration);
-                direction.y = Mathf.Lerp(direction.y, ballInputController.Vertical, 1f / ballAcceleration);
+                direction.x = Mathf.Lerp(direction.x, InputController.Horizontal, 1f / ballAcceleration);
+                direction.y = Mathf.Lerp(direction.y, InputController.Vertical, 1f / ballAcceleration);
 
-                rotation.x = Mathf.Lerp(rotation.x, ballInputController.Vertical, 1f / ballAcceleration);
-                rotation.y = Mathf.Lerp(rotation.y, -ballInputController.Horizontal, 1f / ballAcceleration);
+                rotation.x = Mathf.Lerp(rotation.x, InputController.Vertical, 1f / ballAcceleration);
+                rotation.y = Mathf.Lerp(rotation.y, -InputController.Horizontal, 1f / ballAcceleration);
 
-                if(Input.GetKeyDown(KeyCode.Z))
+                if(InputController.ExitFromPuzle)
                 {
                     FinishPuzle();
                 }

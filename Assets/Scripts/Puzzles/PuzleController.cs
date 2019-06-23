@@ -52,7 +52,7 @@ public class PuzleController : MonoBehaviour
     }
 
     void Update() {
-        if(Input.GetKey(KeyCode.H) && Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKey(KeyCode.H) && Input.GetKeyDown(KeyCode.K)) //DevHack
         {
             for(int i = 0; i < 3; i++)
             {

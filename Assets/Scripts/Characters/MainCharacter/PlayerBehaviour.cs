@@ -218,19 +218,19 @@ namespace DefinitiveScript
             {
                 if(!stopInput && !playerOff)
                 {
-                    if(!lockedTarget && InputController.ChangeMoveModeInput)
+                    if(!lockedTarget && InputController.ChangeMoveMode)
                     {
                         ChangeMode();
                     }
 
-                    if(sableMode && InputController.LockTargetInput)
+                    if(sableMode && InputController.LockTarget)
                     {
                         LockUnlockTarget();
                     }
 
                     if(!stopMovement)
                     {
-                        runningInput = !HealthController.GetRunOutOfStamina() && InputController.RunningInput;
+                        runningInput = !HealthController.GetRunOutOfStamina() && InputController.Running;
 
                         movementInput = new Vector2(InputController.Horizontal, InputController.Vertical);
 
@@ -246,9 +246,9 @@ namespace DefinitiveScript
                         runningInput = false;
                     }
 
-                    attackInput = InputController.AttackInput;
-                    shootInput = InputController.ShootingInput;
-                    blockInput = InputController.BlockInput && !HealthController.GetRunOutOfStamina();
+                    attackInput = InputController.Attack;
+                    shootInput = InputController.Shooting;
+                    blockInput = InputController.Block && !HealthController.GetRunOutOfStamina();
                 }
                 else
                 {   

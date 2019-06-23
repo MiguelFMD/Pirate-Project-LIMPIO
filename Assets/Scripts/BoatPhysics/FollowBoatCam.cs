@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DefinitiveScript;
 
 public class FollowBoatCam : MonoBehaviour
 {
+    private InputController m_InputController;
+    public InputController InputController
+    {
+        get {
+            if(m_InputController == null) m_InputController = GameManager.Instance.InputController;
+            return m_InputController;
+        }
+    }
+
     public float DistanceFromBoat;
     public float yPositionAirCamera;
     public float RotationSpeed;
@@ -28,16 +38,16 @@ public class FollowBoatCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(InputController.ToMap)
         {
             airCamera = !airCamera;
             transition = true;
             StartCoroutine(TransitionBetweenCameras(1.0f));
         }
         
-        if(Input.GetMouseButton(0) && !airCamera)
+        if(!airCamera)
         {
-            yAngle += RotationSpeed * Input.GetAxis("Mouse X") * Time.deltaTime;
+            yAngle += RotationSpeed * InputController.MouseInput.x * Time.deltaTime;
         }
     }
 

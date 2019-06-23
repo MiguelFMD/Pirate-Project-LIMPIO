@@ -94,7 +94,7 @@ namespace DefinitiveScript
                 gameTimer += Time.deltaTime;
             }
 
-            if(Input.GetKeyDown(KeyCode.T))
+            if(Input.GetKeyDown(KeyCode.T)) //DevHack
             {
                 StartScoreScreen();
             }

@@ -12,7 +12,7 @@ namespace DefinitiveScript
         [SerializeField] LayerMask blockingLayerMask;
 
         private InputController m_InputController;
-        public InputController inputController {
+        public InputController InputController {
             get {
                 if(m_InputController == null) m_InputController = GameManager.Instance.InputController;
                 return m_InputController;
@@ -70,7 +70,7 @@ namespace DefinitiveScript
         {
             if(onPuzle)
             {
-                if(inputController.GrabInput && selectedObject != null) 
+                if(InputController.Grab && selectedObject != null) 
                 {
                     float xDifference = Input.mousePosition.x - mousePosition.x;
                     float yDifference = Input.mousePosition.y - mousePosition.y;
@@ -107,7 +107,7 @@ namespace DefinitiveScript
                 }
                 else if(selectedObject != null) selectedObject = null;
 
-                if(inputController.ShootingInput)
+                if(InputController.Shooting)
                 {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
@@ -118,7 +118,7 @@ namespace DefinitiveScript
                     }
                 }
 
-                if(Input.GetKeyDown(KeyCode.Z))
+                if(InputController.ExitFromPuzle)
                 {
                     FinishPuzle();
                 }

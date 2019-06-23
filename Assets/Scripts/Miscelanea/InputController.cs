@@ -6,43 +6,66 @@ namespace DefinitiveScript
 {
     public class InputController : MonoBehaviour
     {
-        public float Vertical; //Guarda la información del eje Vertical
-        public float Horizontal; //Guarda la información del eje Horizontal
-        public Vector2 MouseInput; //Guarda la información del movimiento del ratón en X y en Y
-        public bool ChangeMoveModeInput; //Guarda el valor respecto a la pulsación (inicial) del botón de cambio de modo de movimiento
-        public bool LockTargetInput;
-        public bool RunningInput; //Guarda el valor respecto a la pulsación (manteniendo) del botón de correr
-        public bool ShootingInput;
-        public bool AttackInput;
-        public bool BlockInput;
-        public bool GrabInput;
+        public float Vertical; //Positivo con W o Up y negativo con S o Down
+        public float Horizontal; //Positivo con D o Right y negativo con A o Left 
+        public Vector2 MouseInput; //Movimiento del ratón en X y en Y
+        public bool ChangeMoveMode; //True cuando se pulsa C
+        public bool CenterRudder; //True cuando se pulsa C
+        public bool LockTarget; //True cuando se pulsa la rueda del ratón
+        public bool Running; //True cuando se mantiene shift (izquierdo o derecho)
+        public bool Shooting; //True cuando se pulsa el click izquierdo del ratón
+        public bool Attack; //True cuando se pulsa el click izquierdo del ratón
+        public bool Block; //True cuando se mantiene el click derecho del ratón
+        public bool Grab; //True cuando se mantiene el click izquierdo del ratón
 
-        public bool IncreaseNumber;
-        public bool DecreaseNumber;
-        public bool ChangeSelectedNumberRight;
-        public bool ChangeSelectedNumberLeft;
-        public bool CheckNumbers;
-        public bool ExitFromPuzle;
+        public bool IncreaseNumber; //True cuando se pulsa W
+        public bool DecreaseNumber; //True cuando se pulsa S
+        public bool ChangeSelectedNumberRight; //True cuando se pulsa D
+        public bool ChangeSelectedNumberLeft; //True cuando se pulsa A
+
+        public bool EnterIntoPuzle; //True cuando se pulsa Z
+        public bool CheckNumbers; //True cuando se pulsa Z
+        public bool ExitFromPuzle; //True cuando se pulsa X
+        public bool ExitFromPause; //True cuando se pulsa X
+
+        public bool ToMap; //True cuando se pulsa M
+
+        public bool Pause; //True cuando se pulsa P
 
         void Update()
         {
             Vertical = Input.GetAxis("Vertical");
             Horizontal = Input.GetAxis("Horizontal");
-            MouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-            ChangeMoveModeInput = Input.GetButtonDown("ChangeMoveMode");
-            LockTargetInput = Input.GetButtonDown("MouseMiddleClick");
-            RunningInput = Input.GetButton("Running");
-            ShootingInput = Input.GetButtonDown("MouseLeftClick");
-            AttackInput = Input.GetButtonDown("MouseLeftClick") || Input.GetKeyDown(KeyCode.F);
-            BlockInput = Input.GetButton("MouseRightClick");
-            GrabInput = Input.GetButton("MouseLeftClick");
+            
+            IncreaseNumber = Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") > 0f;
+            DecreaseNumber = Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0f;
+            
+            ChangeSelectedNumberRight = Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") > 0f;
+            ChangeSelectedNumberLeft = Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") < 0f;
 
-            IncreaseNumber = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-            DecreaseNumber = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
-            ChangeSelectedNumberRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-            ChangeSelectedNumberLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
-            CheckNumbers = Input.GetKeyDown(KeyCode.Return);
-            ExitFromPuzle = Input.GetKeyDown(KeyCode.Z);
+            MouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+            Shooting = Input.GetButtonDown("MouseLeftClick");
+            Attack = Input.GetButtonDown("MouseLeftClick");
+            LockTarget = Input.GetButtonDown("MouseMiddleClick");
+
+            Grab = Input.GetButton("MouseLeftClick");
+            Block = Input.GetButton("MouseRightClick");
+
+            CheckNumbers = Input.GetButtonDown("Interact");
+            EnterIntoPuzle = Input.GetButtonDown("Interact");
+
+            ExitFromPuzle = Input.GetButtonDown("Cancel");
+            ExitFromPause = Input.GetButtonDown("Cancel");
+
+            ChangeMoveMode = Input.GetButtonDown("Change");
+            CenterRudder = Input.GetButtonDown("Change");
+
+            Running = Input.GetButton("Running");
+
+            ToMap = Input.GetButtonDown("Map");
+
+            Pause = Input.GetButtonDown("Pause");
         } 
     }
 }
