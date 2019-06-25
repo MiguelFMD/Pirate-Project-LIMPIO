@@ -4,39 +4,57 @@ using UnityEngine;
 using DefinitiveScript;
 using Cinemachine;
 
+
+
 public class OpenChest : MonoBehaviour
 {
     //public GameObject player; 
     // Start is called before the first frame update
-    //public Camera mainCam;
-    //public Camera rotatingCam;
+    public Camera mainCam;
+    public CinemachineVirtualCamera dollyCam;
+    //public SceneController sController;
     private bool nearChest;
-    private bool spacePressed;
+    private bool keyPressed;
     void Start()
     {
-        
+        nearChest = false;
+        keyPressed = false; 
+    }
+
+    private IEnumerator openingAnimation ()
+    {
+        GetComponent<Animator>().SetBool("isOpening", true);
+        Debug.Log("Function Run");
+        yield return new WaitForSeconds (5.0f);
+        // sController.GetComponent<SceneController>().StartScoreScreen();
+        GameManager.Instance.SceneController.StartScoreScreen();
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) spacePressed = true;
+        if (nearChest) {
+            if(Input.GetKeyDown(KeyCode.Z)) keyPressed = true;
+        }
     }
     
     private void OnTriggerEnter (Collider other) {
-        if ((other.gameObject.tag == "Player") && (spacePressed)/*&& (Input.GetKeyDown(KeyCode.Space))*/) {
+        if ((other.gameObject.tag == "Player")) {
+           //  Debug.Log("ey");
             //nearChest = true; 
-           //if() print("cosas");
-             GameManager.Instance.LocalPlayer.playerOff = true; 
-              Debug.Log("ey");
-            other.gameObject.active = false;
-            GetComponent<Animator>().SetBool("isOpening", true);
-            
-           /* if (other.GetComponent<PlayerHealthController>().HasKey()) {
-                GameManager.Instance.LocalPlayer.stopInput = true; 
-        
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                GameManager.Instance.LocalPlayer.playerOff = true; 
+               
+                other.gameObject.active = false;
+                dollyCam.GetComponent<CinemachineVirtualCamera>().Priority = 11;
+               
+                StartCoroutine(openingAnimation());
+               
+                    
             }
-           */
+           
         }
 
     }

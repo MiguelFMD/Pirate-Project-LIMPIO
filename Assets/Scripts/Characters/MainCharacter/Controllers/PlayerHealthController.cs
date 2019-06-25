@@ -34,7 +34,7 @@ namespace DefinitiveScript
 
         private int currentMoney = 0;
 
-        private bool hasKey = false;
+        private bool hasKey = true;
 
         protected override void Update()
         {
