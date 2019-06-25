@@ -1132,8 +1132,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -601.30835}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchoredPosition: {x: 960, y: -941.86127}
+  m_SizeDelta: {x: 186.8, y: 96.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501535412
 MonoBehaviour:
@@ -3323,8 +3323,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -133.96167}
-  m_SizeDelta: {x: 160, y: 77}
+  m_AnchoredPosition: {x: 960, y: -98.49724}
+  m_SizeDelta: {x: 303.7, y: 89.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334300133
 MonoBehaviour:
@@ -3401,7 +3401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
+  m_SubmitButton: Interact
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
@@ -3566,8 +3566,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 880, y: -361.885}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 482, y: -518.41675}
+  m_SizeDelta: {x: 956, y: 515.6}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1412100543
 MonoBehaviour:
@@ -3988,8 +3988,8 @@ GameObject:
   - component: {fileID: 1690224646}
   - component: {fileID: 1690224649}
   - component: {fileID: 1690224648}
-  - component: {fileID: 1690224647}
   - component: {fileID: 1690224650}
+  - component: {fileID: 1690224647}
   m_Layer: 5
   m_Name: HelpPanel
   m_TagString: Untagged
@@ -4034,8 +4034,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 20
-    m_Bottom: 50
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 10
   m_ChildForceExpandWidth: 1

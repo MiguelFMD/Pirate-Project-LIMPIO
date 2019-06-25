@@ -3408,16 +3408,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8625106862976635284}
     m_Modifications:
-    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
-        type: 3}
-      propertyPath: m_Name
-      value: TorchModel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 1621129549826436354, guid: b973cff6241232243a921e5f2b370a22,
         type: 3}
       propertyPath: m_RootOrder
@@ -3477,6 +3467,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 7.8570004
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
+        type: 3}
+      propertyPath: m_Name
+      value: TorchModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1621129550767136656, guid: b973cff6241232243a921e5f2b370a22,
         type: 3}
@@ -4686,7 +4686,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781425795}
-  m_LocalRotation: {x: 0.120828785, y: -0.6849732, z: 0.11674554, w: 0.7089306}
+  m_LocalRotation: {x: 0.120828785, y: -0.6849732, z: 0.11674553, w: 0.7089306}
   m_LocalPosition: {x: 49.7, y: 2.3899999, z: 143.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6896,7 +6896,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &1505993925
 BoxCollider:
@@ -7139,6 +7139,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewCharacterStuff
       objectReference: {fileID: 0}
+    - target: {fileID: 8354612612135037956, guid: df0e6fa16c870ea4ba646472716f24f3,
+        type: 3}
+      propertyPath: far clip plane
+      value: 490
+      objectReference: {fileID: 0}
     - target: {fileID: 800827330538688292, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7202,37 +7207,37 @@ PrefabInstance:
     - target: {fileID: 8354612612135037959, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000034886998
+      value: 0.08672645
       objectReference: {fileID: 0}
     - target: {fileID: 8354612612135037959, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000035299884
+      value: 0.9962322
       objectReference: {fileID: 0}
     - target: {fileID: 8354612612135037959, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.4300003
+      value: -7.700001
       objectReference: {fileID: 0}
     - target: {fileID: 8354612612135037959, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9951518
+      value: -0.000000029458965
       objectReference: {fileID: 0}
     - target: {fileID: 8354612612135037959, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.09835119
+      value: -6.9643076e-11
       objectReference: {fileID: 0}
     - target: {fileID: 8354612612135037959, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.09
+      value: 19.09
       objectReference: {fileID: 0}
     - target: {fileID: 8354612612135037959, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 8354612610305228876, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
@@ -7262,12 +7267,12 @@ PrefabInstance:
     - target: {fileID: 8354612610967032771, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000039186443
+      value: -0.000000036423735
       objectReference: {fileID: 0}
     - target: {fileID: 8354612610967032771, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000020195722
+      value: -0.000000014105965
       objectReference: {fileID: 0}
     - target: {fileID: 8354612610967032771, guid: df0e6fa16c870ea4ba646472716f24f3,
         type: 3}
@@ -7338,11 +7343,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 23.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8354612612135037956, guid: df0e6fa16c870ea4ba646472716f24f3,
-        type: 3}
-      propertyPath: far clip plane
-      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0e6fa16c870ea4ba646472716f24f3, type: 3}
@@ -7473,16 +7473,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4436006662900338479}
     m_Modifications:
-    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
-        type: 3}
-      propertyPath: m_Name
-      value: TorchModel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 1621129549826436354, guid: b973cff6241232243a921e5f2b370a22,
         type: 3}
       propertyPath: m_RootOrder
@@ -7542,6 +7532,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 7.8570004
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
+        type: 3}
+      propertyPath: m_Name
+      value: TorchModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621129549826535714, guid: b973cff6241232243a921e5f2b370a22,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1621129550767136656, guid: b973cff6241232243a921e5f2b370a22,
         type: 3}
@@ -8035,6 +8035,10 @@ PrefabInstance:
     - target: {fileID: 1904352722251772, guid: d569b2cacf7b8054b82ca0f03e92e7d3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904352722251772, guid: d569b2cacf7b8054b82ca0f03e92e7d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4237509593823348, guid: d569b2cacf7b8054b82ca0f03e92e7d3, type: 3}
       propertyPath: m_LocalPosition.x
