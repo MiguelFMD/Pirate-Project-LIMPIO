@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Play.unity
     guid: 93e160b576fd718448f347868dafea35
   - enabled: 1
     path: Assets/Scenes/BoatPhysics.unity
